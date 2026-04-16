@@ -52,10 +52,10 @@ export function About() {
                  <span className="w-8 h-px bg-primary" />
                  About Me
               </h2>
-              <h3 className="text-5xl md:text-6xl font-bold tracking-tighter mb-8 leading-tight">
-                Solving Complex <span className="italic font-light text-neutral-400">Engineering</span> Problems
+              <h3 className="text-4xl md:text-5xl font-bold tracking-tighter mb-8 leading-tight">
+                Solving Complex <span className="italic font-light text-neutral-300">Engineering</span> Problems
               </h3>
-              <p className="text-neutral-400 text-lg leading-relaxed mb-10">
+              <p className="text-neutral-300 text-lg md:text-xl leading-relaxed mb-10 font-medium">
                 I am a DevOps and MLOps Engineer passionate about building scalable, 
                 high-performance infra that empowers intelligent applications. 
                 With deep expertise in cloud architectures and model orchestration, 

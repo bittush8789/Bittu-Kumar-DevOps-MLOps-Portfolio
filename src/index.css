@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
-@import "@fontsource-variable/geist";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Unbounded:wght@400;700;900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @theme inline {
-    --font-heading: 'Playfair Display', serif;
-    --font-sans: 'Geist Variable', 'Outfit', sans-serif;
+    --font-heading: 'Unbounded', sans-serif;
+    --font-sans: 'Inter', sans-serif;
     
     --color-background: var(--bg-color, #000000);
     --color-foreground: var(--fg-color, #ffffff);
@@ -21,23 +20,43 @@
 }
 
 :root {
-    --bg-color: #030303; /* Deep Onyx */
-    --fg-color: #ffffff;
-    --primary-color: #FFB319; /* Amber */
-    --accent-color: #6366F1;
-    --border: rgba(255, 255, 255, 0.1);
+    --bg-color: #050505; /* Rich Onyx */
+    --fg-color: #f5f5f5;
+    --primary-color: #FFB319; /* Amber Gold */
+    --accent-color: #6366F1; /* Indigo */
+    --border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --text-muted: #a1a1aa;
 }
 
 [data-theme='blue'] {
-    --bg-color: #020817; /* Deep Arctic Navy */
-    --primary-color: #00D1FF; /* Arctic Blue */
-    --accent-color: #FF19B3; /* Pink accent */
+    --bg-color: #020a18; /* Deep Midnight Navy */
+    --fg-color: #e8f4ff;
+    --primary-color: #38bdf8; /* Sky Blue */
+    --accent-color: #f472b6; /* Rose Pink */
+    --border: rgba(56, 189, 248, 0.08);
+    --glass-bg: rgba(56, 189, 248, 0.03);
+    --text-muted: #94a3b8;
 }
 
 [data-theme='purple'] {
-    --bg-color: #0b0214; /* Deep Velvet Night */
-    --primary-color: #BF19FF; /* Vivid Purple */
-    --accent-color: #19FFB3; /* Mint accent */
+    --bg-color: #0a0118; /* Deep Cosmic Violet */
+    --fg-color: #f3e8ff;
+    --primary-color: #c084fc; /* Soft Violet */
+    --accent-color: #34d399; /* Emerald Mint */
+    --border: rgba(192, 132, 252, 0.08);
+    --glass-bg: rgba(192, 132, 252, 0.03);
+    --text-muted: #a78bfa;
+}
+
+[data-theme='emerald'] {
+    --bg-color: #01120a; /* Deep Forest Black */
+    --fg-color: #ecfdf5;
+    --primary-color: #34d399; /* Emerald */
+    --accent-color: #f59e0b; /* Warm Amber */
+    --border: rgba(52, 211, 153, 0.08);
+    --glass-bg: rgba(52, 211, 153, 0.03);
+    --text-muted: #6ee7b7;
 }
 
 @layer base {
@@ -45,19 +64,21 @@
         @apply border-border selection:bg-primary/30 selection:text-primary;
     }
     body {
-        @apply bg-background text-foreground overflow-x-hidden text-lg;
+        @apply bg-background text-foreground overflow-x-hidden text-[17px] sm:text-lg;
         font-family: var(--font-sans);
         -webkit-font-smoothing: antialiased;
         background-attachment: fixed;
         background-image: 
-            radial-gradient(circle at 50% -20%, var(--primary-color) 0%, transparent 15%),
-            radial-gradient(circle at 100% 100%, var(--accent-color) 0%, transparent 10%);
-        line-height: 1.6;
-        letter-spacing: -0.01em;
+            radial-gradient(ellipse at 50% -30%, color-mix(in srgb, var(--primary-color) 15%, transparent) 0%, transparent 60%),
+            radial-gradient(ellipse at 100% 100%, color-mix(in srgb, var(--accent-color) 10%, transparent) 0%, transparent 50%),
+            radial-gradient(ellipse at 0% 50%, color-mix(in srgb, var(--primary-color) 5%, transparent) 0%, transparent 40%);
+        line-height: 1.7;
+        letter-spacing: -0.015em;
+
     }
     h1, h2, h3, h4 {
         font-family: var(--font-heading);
-        @apply tracking-tighter;
+        @apply tracking-[-0.03em] font-black;
     }
 }
 

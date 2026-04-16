@@ -4,7 +4,7 @@ import { ArrowRight, Calendar, Clock, ExternalLink } from 'lucide-react';
 
 export function Blog() {
   return (
-    <section id="blog" className="py-32 relative bg-black overflow-hidden">
+    <section id="blog" className="py-32 relative bg-background overflow-hidden transition-colors duration-700">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
           <div>

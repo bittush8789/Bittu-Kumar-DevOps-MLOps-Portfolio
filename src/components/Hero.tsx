@@ -32,7 +32,7 @@ export function Hero() {
             </motion.div>
             
             <h1 className="text-7xl md:text-9xl font-black mb-8 leading-[0.9] tracking-tighter">
-              <span className="block italic font-light text-primary">Bittu</span>
+              <span className="block text-primary">Bittu</span>
               <span className="block mt-2">Kumar</span>
             </h1>
             
@@ -96,19 +96,19 @@ export function Hero() {
             </div>
             </Tilt>
             
-            {/* Floating Glass Cards */}
+            {/* Floating Status Card */}
             <motion.div 
                animate={{ y: [0, -20, 0] }}
                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-               className="absolute -top-10 -right-10 glass-panel p-6 rounded-3xl border-white/20 blur-sm hover:blur-none transition-all duration-500"
+               className="absolute -top-6 -right-6 lg:-right-12 glass-panel p-6 rounded-[24px] border-white/10 backdrop-blur-2xl transition-all duration-500 shadow-2xl z-20"
             >
-              <div className="flex items-center gap-3">
-                 <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+              <div className="flex items-center gap-4">
+                 <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary border border-primary/20">
                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5z"/></svg>
                  </div>
                  <div>
-                   <p className="text-[10px] font-bold text-neutral-400">STATUS</p>
-                   <p className="text-sm font-bold">PROD READY</p>
+                   <p className="text-[11px] font-black text-primary/70 tracking-widest uppercase mb-0.5">Engine Status</p>
+                   <p className="text-[14px] font-black tracking-tight">PROD READY</p>
                  </div>
               </div>
             </motion.div>

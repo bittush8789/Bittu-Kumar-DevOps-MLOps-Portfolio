@@ -1,11 +1,11 @@
-import { 
-  Box, 
-  Infinity, 
-  Server, 
-  Github, 
-  Layers, 
-  Cloud, 
-  Code2, 
+import {
+  Box,
+  Infinity,
+  Server,
+  Github,
+  Layers,
+  Cloud,
+  Code2,
   Terminal,
   Database,
   Cpu,
@@ -51,17 +51,17 @@ export const REMOTE_SERVICES = [
 
 export const CERTIFICATES = [
   {
-    title: 'Certified DevOps Professional – Oracle Cloud Infrastructure',
-    issuer: 'Oracle',
-    date: '2024',
+    title: 'OCI 2025 Certified DevOps Professional',
+    issuer: 'Oracle University',
+    date: '2025',
     link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=34AC35A9AEA21083794F856492091CE23B71B82C30060C6E29685DD4C9E591AD',
-    category: 'Cloud',
+    category: 'Cloud/DevOps',
   },
   {
     title: 'MLOps Training & Certification',
     issuer: 'EXL Service India Pvt. Ltd.',
     date: '2024',
-    link: '#',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7285340877634392066/',
     category: 'MLOps',
   },
   {
@@ -89,10 +89,24 @@ export const CERTIFICATES = [
 
 export const BLOG_POSTS = [
   {
-    title: 'Visit My Technical Blog on Hashnode',
-    excerpt: 'I write about DevOps, Cloud, MLOps, and AI Engineering. Check out my latest articles on practical implementations and system architecture.',
-    date: 'Latest',
-    readTime: 'Various',
+    title: 'Architecting a production-grade LLM pipeline with LangChain',
+    excerpt: 'Step-by-step guide on building a RAG system that scales from proof-of-concept to production workloads using Pinecone and LangSmith.',
+    date: 'March 2024',
+    readTime: '12 min',
+    link: 'https://bittublog.hashnode.dev/',
+  },
+  {
+    title: 'Kubernetes Cost Optimization: Saving 40% on AWS EKS',
+    excerpt: 'Practical strategies for managing resource limits, using Spot instances, and optimizing node groups for real-world CI/CD workflows.',
+    date: 'February 2024',
+    readTime: '8 min',
+    link: 'https://bittublog.hashnode.dev/',
+  },
+  {
+    title: 'GitOps Patterns with ArgoCD and Terraform',
+    excerpt: 'How to manage your infrastructure and applications as code using the latest GitOps principles for high-velocity teams.',
+    date: 'January 2024',
+    readTime: '15 min',
     link: 'https://bittublog.hashnode.dev/',
   },
 ];
@@ -126,23 +140,23 @@ export const SKILLS = [
     category: 'DevOps & Infra',
     items: [
       { name: 'Docker & Kubernetes', icon: 'Box' },
-      { name: 'Terraform & Ansible', icon: 'Layers' },
+      { name: 'Terraform & Pulumi', icon: 'Layers' },
       { name: 'Helm & Kustomize', icon: 'Box' },
-      { name: 'AWS (EKS, S3, IAM)', icon: 'Cloud' },
+      { name: 'AWS & Google Cloud', icon: 'Cloud' },
       { name: 'GitHub Actions', icon: 'Github' },
       { name: 'ArgoCD (GitOps)', icon: 'Infinity' },
-      { name: 'Prometheus & Grafana', icon: 'Cpu' },
+      { name: 'Prometheus & Grafana Loki', icon: 'Cpu' },
     ],
   },
   {
     category: 'DevSecOps & Security',
     items: [
       { name: 'Snyk & Trivy', icon: 'ShieldCheck' },
-      { name: 'SonarQube', icon: 'Code2' },
+      { name: 'SonarQube & Checkov', icon: 'Code2' },
       { name: 'HashiCorp Vault', icon: 'Lock' },
       { name: 'Aqua Security', icon: 'ShieldCheck' },
-      { name: 'OPA (Open Policy)', icon: 'Layers' },
-      { name: 'Python & Bash', icon: 'Terminal' },
+      { name: 'Istio Service Mesh', icon: 'Layers' },
+      { name: 'FastAPI & Django', icon: 'Terminal' },
       { name: 'Linux Administration', icon: 'Terminal' },
     ],
   },
@@ -150,9 +164,24 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
+    title: 'US Visa Approval Prediction',
+    type: 'MLOps',
+    problem: 'Architecting a production-scale MLOps environment to automate the lifecycle of US Visa prediction models. This implementation features robust data versioning with DVC, automated CI/CD via GitHub Actions, and scalable model serving using Kserve on Kubernetes, ensuring high availability and reproducible experiments across distributed teams.',
+    stack: ['Python', 'Docker', 'AWS (S3/ECR)', 'MLflow', 'DVC', 'GitHub Actions', 'ArgoCD', 'Prometheus', 'Grafana'],
+    features: [
+      'Automated End-to-End MLOps Pipeline',
+      'Data & Model Versioning with DVC',
+      'GitOps-based deployment on Kubernetes',
+      'Real-time system & model monitoring',
+    ],
+    github: 'https://github.com/bittush8789/us-visa-mlops',
+    image: '/us-visa.png',
+    isFeatured: true,
+  },
+  {
     title: 'Churn Model Prediction',
     type: 'MLOps',
-    problem: 'Developing a robust system to predict customer churn using machine learning and MLOps best practices.',
+    problem: 'Developing an end-to-end predictive system for customer churn that integrates advanced machine learning with production-grade monitoring. The project focuses on building a self-healing infrastructure that tracks model drift in real-time using Prometheus and Grafana, enabling proactive updates to maintain prediction accuracy in dynamic market conditions.',
     stack: ['Python', 'Scikit-Learn', 'Docker', 'Kubernetes', 'FastAPI', 'Prometheus', 'Grafana'],
     features: [
       'End-to-end MLOps pipeline for model inference',
@@ -165,7 +194,7 @@ export const PROJECTS = [
   {
     title: 'MLOps Zero to Hero',
     type: 'MLOps',
-    problem: 'A comprehensive guide and roadmap for mastering MLOps from scratch to production-grade systems.',
+    problem: 'A structured, industry-aligned roadmap designed to guide engineers through the complexities of modern MLOps. This comprehensive resource covers everything from containerization and orchestration to advanced LLMOps patterns, providing hands-on implementation guides for building resilient, cloud-native AI infrastructure from the ground up.',
     stack: ['MLOps Roadmap', 'Best Practices', 'System Design', 'Cloud Architecture'],
     features: [
       'Step-by-step learning path for MLOps engineers',
@@ -178,8 +207,8 @@ export const PROJECTS = [
   },
   {
     title: 'Medical Chatbot with LLMs & LangChain',
-    type: 'MLOps',
-    problem: 'Building a scalable medical chatbot with context-aware retrieval and secure cloud deployment.',
+    type: 'LLMOps',
+    problem: 'Implementing a secure, HIPAA-conscious medical chatbot using Retrieval Augmented Generation (RAG) and open-source LLMs. The system leverages Pinecone for high-performance vector search and LangChain for complex chain management, all deployed within an AWS-based containerized environment to ensure scalability and low-latency responses.',
     stack: ['LLMs', 'LangChain', 'Pinecone', 'Flask', 'AWS', 'Docker'],
     features: [
       'RAG implementation for medical knowledge retrieval',
@@ -192,7 +221,7 @@ export const PROJECTS = [
   {
     title: 'End-to-End ML Pipeline',
     type: 'MLOps',
-    problem: 'Automating the entire machine learning lifecycle from data ingestion to production deployment.',
+    problem: 'Designing a fully automated CI/CD pipeline specialized for machine learning workloads. This project demonstrates the seamless integration of MLflow for experiment tracking and DVC for data provenance, enabling a "push-to-deploy" workflow that handles training, validation, and containerized deployment with zero-downtime on Kubernetes clusters.',
     stack: ['Python', 'MLflow', 'DVC', 'Docker', 'Kubernetes', 'GitHub Actions'],
     features: [
       'CI/CD for machine learning models',
@@ -203,9 +232,61 @@ export const PROJECTS = [
     image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80&w=800',
   },
   {
-    title: 'AI DevOps Copilot',
+    title: 'US Plumbing Solutions',
     type: 'DevOps',
-    problem: 'Manual troubleshooting and infrastructure management in complex DevOps environments.',
+    problem: 'Developing a robust, scalable full-stack booking and management system for a US-based services company, featuring automated deployments and secure client management.',
+    stack: ['React', 'Node.js', 'Postgres', 'Docker', 'AWS', 'GitHub Actions'],
+    features: [
+      'Interactive booking and scheduling system',
+      'Automated CI/CD pipeline for cloud deployment',
+      'Secure client management and payment integration',
+    ],
+    github: 'https://github.com/bittush8789/Full-stack-US-based-plumbing-company',
+    image: '/plumbing.png',
+  },
+  {
+    title: 'Food Delivery Infrastructure',
+    type: 'DevOps',
+    problem: 'Architecting a highly available, containerized delivery ecosystem with multi-stage CI/CD pipelines and automated scaling to handle high-traffic workloads.',
+    stack: ['React', 'Node.js', 'Redis', 'Docker', 'Kubernetes', 'GitHub Actions', 'AWS'],
+    features: [
+      'High-concurrency ordering system with Redis',
+      'Multi-stage CI/CD for staging/production',
+      'Auto-scaling Kubernetes Cluster deployment',
+    ],
+    github: 'https://github.com/bittush8789/fullstack-food-delivery-app',
+    image: '/food-delivery.png',
+  },
+  {
+    title: 'AI Blog Engine',
+    type: 'LLMOps',
+    problem: 'Deploying and managing an AI-driven content platform with automated model inference pipelines, cloud storage integration, and scalable web infrastructure.',
+    stack: ['Python', 'Django', 'Docker', 'AWS (Lambda/S3)', 'Terraform', 'GitHub Actions'],
+    features: [
+      'Automated AI-content generation pipelines',
+      'Infrastructure-as-Code (IaC) with Terraform',
+      'Serverless scaling for AI inference tasks',
+    ],
+    github: 'https://github.com/bittush8789/AI-Blog-Generator-Platform',
+    image: '/ai-blog.png',
+  },
+  {
+    title: 'HealthConnect (Production SKU)',
+    type: 'DevOps',
+    problem: 'Engineering a high-availability healthcare appointment platform with production-ready patterns, automated SSL/TLS termination, and resilient microservices architecture.',
+    stack: ['React', 'Node.js', 'MongoDB', 'Nginx', 'Docker Swarm', 'GitHub Actions'],
+    features: [
+      'Production-grade microservices with Nginx Proxy',
+      'Automated SSL/TLS and secure session handling',
+      'High-concurrency appointment scheduling system',
+    ],
+    github: 'https://github.com/bittush8789/production-ready-Healthcare-Appointment-Booking-Website',
+    image: '/healthcare.png',
+  },
+  {
+    title: 'AI DevOps Copilot',
+    type: 'LLMOps',
+    problem: 'Bridging the gap between generative AI and infrastructure management by building an intelligent assistant for DevOps troubleshooting. The copilot uses RAG to analyze logs and cloud configurations, providing automated root-cause analysis and Infrastructure-as-Code suggestions to reduce Mean Time to Recovery (MTTR) in complex microservices environments.',
     stack: ['Python', 'OpenAI/Gemini', 'LangChain', 'Terraform', 'Kubernetes'],
     features: [
       'AI-driven infrastructure provisioning and optimization',
@@ -218,7 +299,7 @@ export const PROJECTS = [
   {
     title: 'AI-Powered DevOps Projects',
     type: 'DevOps',
-    problem: 'Integrating AI capabilities into traditional DevOps workflows for better automation.',
+    problem: 'Exploring the intersection of artificial intelligence and site reliability engineering through a series of automated pilot projects. Key implementations include predictive scaling algorithms for AWS EC2/EKS and self-healing CI/CD pipelines that use LLMs to automatically patch common dependency vulnerabilities and configuration drifts.',
     stack: ['Python', 'GitHub Actions', 'Docker', 'AI/ML Models', 'AWS'],
     features: [
       'Self-healing CI/CD pipelines',
@@ -231,7 +312,7 @@ export const PROJECTS = [
   {
     title: 'Modern Resume & Portfolio Builder',
     type: 'DevOps',
-    problem: 'Need for a professional, automated way to showcase technical skills and projects.',
+    problem: 'Developing a high-performance, developer-centric portfolio engine that automates the generation of resumes and project showcases. Built with a focus on core web vitals and premium aesthetics, the application uses React and Framer Motion to deliver a "Liquid Glass" experience, serving as a template for technical professionals to showcase complex skillsets.',
     stack: ['React', 'Tailwind CSS', 'Framer Motion', 'TypeScript', 'Vite'],
     features: [
       'Dynamic resume generation for different roles',
@@ -245,39 +326,40 @@ export const PROJECTS = [
 
 export const EXPERIENCE = [
   {
-    role: 'Associate Analyst – MLOps',
+    role: 'MLOps Engineer',
     company: 'EXL Service India Pvt. Ltd. – Noida',
     period: 'April 2024 – Present',
-    description: 'Specializing in building and deploying scalable ML and LLM systems.',
+    description: 'Independently architecting and deploying scalable ML/LLM systems across distributed cloud environments with production-grade pipelines and end-to-end lifecycle management.',
     achievements: [
-      'Designed end-to-end MLOps workflows for model training, deployment, and monitoring.',
-      'Containerized ML workloads using Docker and deployed on Kubernetes for scalable inference.',
-      'Implemented KServe-based model serving and automated deployment readiness.',
-      'Integrated external model artifact storage using AWS S3 and SageMaker.',
+      'Designed and implemented end-to-end MLOps workflows covering model training, versioning, deployment, serving, scaling, and lifecycle management — fully automated for async, remote-first operations.',
+      'Built and productionized ML models with clear separation between model logic, serving layer, and infrastructure, enabling independent ownership across distributed teams.',
+      'Implemented custom model serving using Flask with Gunicorn (WSGI) and evaluated against KServe-managed serving, documenting scalability and operational trade-offs for cross-team reference.',
+      'Containerized ML workloads using Docker to ensure reproducible builds and immutable artifacts across multiple cloud environments.',
+      'Deployed ML models on Kubernetes using Deployments, Services, and Ingress for scalable, self-healing inference — zero-touch deployments via GitOps.',
+      'Implemented KServe-based model serving using standardized inference APIs, enabling seamless handoffs between remote ML and platform teams.',
+      'Integrated external model artifact storage using AWS S3 and HTTP-based endpoints for globally accessible model registries.',
+      'Configured SageMaker Domain, User Profiles, and IAM execution roles for secure, multi-tenant ML environments supporting remote data science teams.',
+      'Designed IAM-based role separation for Data Scientists, ML Engineers, and MLOps Engineers — enforcing least-privilege access across distributed teams.',
+      'Automated model training, artifact generation, and deployment readiness using Kubeflow pipelines, reducing manual intervention and enabling async workflow execution.',
+      'Maintained comprehensive documentation and runbooks for all ML infrastructure, ensuring smooth knowledge transfer across time zones.',
     ],
   },
   {
-    role: 'Associate Analyst – LLMOps',
+    role: 'DevOps Engineer',
     company: 'EXL Service India Pvt. Ltd. – Noida',
     period: 'April 2024 – Present',
-    description: 'Designing production-grade RAG-based LLM pipelines and observability systems.',
+    description: 'Independently managing cloud infrastructure, CI/CD automation, and production reliability for distributed development teams across multiple projects.',
     achievements: [
-      'Built production-grade RAG-based LLM pipelines for scalable AI applications.',
-      'Integrated Pinecone vector database for semantic search and context-aware retrieval.',
-      'Implemented LLM observability using LangSmith to monitor performance and latency.',
-      'Automated CI/CD pipelines using Jenkins and GitHub Actions with GitOps (ArgoCD).',
-    ],
-  },
-  {
-    role: 'Associate Analyst – DevOps & Production Support',
-    company: 'EXL Service',
-    period: 'April 2024 – Present',
-    description: 'Streamlining CI/CD pipelines and managing AWS cloud infrastructure.',
-    achievements: [
-      'Achieved 20% reduction in build/deployment time for Java-based applications.',
-      'Implemented Infrastructure as Code using Terraform for AWS EKS and microservices.',
-      'Resolved critical production incidents and optimized Kubernetes cost efficiency.',
-      'Managed Terraform remote state and backend using S3 and DynamoDB.',
+      'Streamlined CI/CD pipelines for Java-based applications using Gradle, achieving a 20% reduction in build and deployment time — enabling faster async release cycles.',
+      'Containerized microservices architecture, supporting services for 2 distributed development teams with self-service deployment capabilities.',
+      'Drove Kubernetes adoption across teams, contributing to 20% cost efficiency through right-sizing and spot instance strategies.',
+      'Implemented Infrastructure as Code using Terraform for microservices and Kubernetes infrastructure on AWS, enabling reproducible environments across teams.',
+      'Hands-on experience with AWS networking (VPC, ALB, Route53, IAM), integrating Route53 with ALB for custom domains in Kubernetes and resolving critical VPC peering issues.',
+      'Introduced Git best practices and branching strategies, improving collaboration and traceability for remote-first development teams.',
+      'Mentored junior DevOps engineers remotely on Kubernetes onboarding, PoCs, and CI/CD automation — conducted async knowledge-sharing sessions.',
+      'Resolved critical production incidents independently, ensuring system availability and minimizing business impact with detailed post-mortem documentation.',
+      'Implemented Kubernetes Ingress for multiple microservices and set up Terraform remote backend with S3/DynamoDB state locking for multi-team state management.',
+      'Leveraged AI tools to accelerate automation, troubleshooting, and documentation — maintaining a self-driven, high-output remote work style.',
     ],
   },
 ];

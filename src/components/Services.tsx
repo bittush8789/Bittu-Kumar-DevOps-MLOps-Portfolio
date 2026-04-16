@@ -14,7 +14,7 @@ const iconMap: Record<string, any> = {
 
 export function Services() {
   return (
-    <section className="py-32 relative bg-black overflow-hidden">
+    <section className="py-32 relative bg-background overflow-hidden transition-colors duration-700">
       {/* Decorative Glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] -z-10" />
       

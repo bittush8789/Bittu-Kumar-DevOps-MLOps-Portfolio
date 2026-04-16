@@ -15,10 +15,10 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const [theme, setTheme] = useState<'amber' | 'blue' | 'purple'>('amber');
+  const [theme, setTheme] = useState<'amber' | 'blue' | 'purple' | 'emerald'>('amber');
 
   const toggleTheme = () => {
-    const themes: ('amber' | 'blue' | 'purple')[] = ['amber', 'blue', 'purple'];
+    const themes: ('amber' | 'blue' | 'purple' | 'emerald')[] = ['amber', 'blue', 'purple', 'emerald'];
     const nextTheme = themes[(themes.indexOf(theme) + 1) % themes.length];
     setTheme(nextTheme);
     document.documentElement.setAttribute('data-theme', nextTheme === 'amber' ? '' : nextTheme);
@@ -69,7 +69,8 @@ export function Navbar() {
               >
                 <div className={`w-4 h-4 rounded-full transition-colors duration-500 ${
                   theme === 'amber' ? 'bg-[#FFB319]' : 
-                  theme === 'blue' ? 'bg-[#00D1FF]' : 'bg-[#BF19FF]'
+                  theme === 'blue' ? 'bg-[#38bdf8]' : 
+                  theme === 'purple' ? 'bg-[#c084fc]' : 'bg-[#34d399]'
                 } shadow-[0_0_10px_currentColor]`} />
               </button>
 
