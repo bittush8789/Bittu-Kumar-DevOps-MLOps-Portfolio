@@ -1,64 +1,58 @@
 import { motion } from 'motion/react';
 import { BLOG_POSTS } from '../constants';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, ExternalLink } from 'lucide-react';
 
 export function Blog() {
   return (
-    <section id="blog" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+    <section id="blog" className="py-32 relative bg-black overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
           <div>
-            <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-4">Insights</h2>
-            <h3 className="text-4xl font-bold tracking-tight">Latest Articles</h3>
+            <h2 className="text-sm font-bold tracking-[0.4em] text-primary uppercase mb-6 flex items-center gap-3">
+              <span className="w-8 h-px bg-primary" />
+              Journal
+            </h2>
+            <h3 className="text-5xl md:text-7xl font-bold tracking-tighter">
+              Latest <span className="italic font-light text-neutral-400">Insights</span>
+            </h3>
           </div>
           <a 
             href="https://bittublog.hashnode.dev/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all"
+            className="px-8 py-3 glass-panel rounded-full text-xs font-black tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-3"
           >
-            View All Posts <ArrowRight className="w-4 h-4" />
+            Explore All <ExternalLink size={14} />
           </a>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="max-w-4xl">
           {BLOG_POSTS.map((post, i) => (
             <motion.div
               key={post.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
+              className="group"
             >
-              <a href={post.link} target="_blank" rel="noopener noreferrer">
-                <Card className="bg-card border-border h-full flex flex-col hover:border-primary/30 transition-all group cursor-pointer">
-                  <CardHeader>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {post.date}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {post.readTime}
-                      </div>
+              <a href={post.link} target="_blank" rel="noopener noreferrer" className="block border-b border-white/5 py-12 group-hover:border-primary/30 transition-colors">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                  <div className="flex-grow">
+                    <div className="flex items-center gap-4 text-[10px] font-black tracking-widest uppercase text-neutral-500 mb-4">
+                      <span className="flex items-center gap-1.5"><Calendar size={12} /> {post.date}</span>
+                      <span className="w-1 h-1 rounded-full bg-neutral-800" />
+                      <span className="flex items-center gap-1.5"><Clock size={12} /> {post.readTime}</span>
                     </div>
-                    <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors leading-tight">
-                      {post.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                  </CardContent>
-                  <div className="p-6 pt-0 mt-auto">
-                    <div className="text-primary text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
-                      Read More <ArrowRight className="w-4 h-4" />
+                    <h4 className="text-3xl md:text-4xl font-bold group-hover:text-primary transition-colors mb-4">{post.title}</h4>
+                    <p className="text-neutral-400 text-lg font-light leading-relaxed max-w-2xl">{post.excerpt}</p>
+                  </div>
+                  <div className="shrink-0">
+                    <div className="w-16 h-16 rounded-full glass-panel flex items-center justify-center group-hover:bg-primary group-hover:rotate-45 transition-all duration-700">
+                      <ArrowRight size={24} className="group-hover:text-black transition-colors" />
                     </div>
                   </div>
-                </Card>
+                </div>
               </a>
             </motion.div>
           ))}

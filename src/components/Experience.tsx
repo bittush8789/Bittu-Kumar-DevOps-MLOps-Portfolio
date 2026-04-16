@@ -1,49 +1,48 @@
 import { motion } from 'motion/react';
 import { EXPERIENCE } from '../constants';
-import { Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24">
-      <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-4">Journey</h2>
-            <h3 className="text-4xl font-bold tracking-tight">Professional Experience</h3>
+    <section id="experience" className="py-32 relative bg-black">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-20">
+          <div className="lg:w-1/3">
+            <h2 className="text-sm font-bold tracking-[0.4em] text-primary uppercase mb-6">Career</h2>
+            <h3 className="text-5xl md:text-6xl font-black italic tracking-tighter mb-8 leading-tight">
+              Work <span className="not-italic text-neutral-400">History</span>
+            </h3>
+            <p className="text-neutral-500 font-medium">A timeline of my professional journey in the world of high-scale engineering.</p>
           </div>
 
-          <div className="space-y-12">
-            {EXPERIENCE.map((exp, i) => (
+          <div className="lg:w-2/3 space-y-12">
+            {EXPERIENCE.map((exp, idx) => (
               <motion.div
-                key={`${exp.company}-${exp.role}`}
-                initial={{ opacity: 0, x: -20 }}
+                key={exp.role + exp.company}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="relative pl-8 border-l border-border"
+                transition={{ delay: idx * 0.1 }}
+                className="glass-panel p-10 rounded-[32px] border-white/5 hover:border-primary/20 transition-all duration-500 group"
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
-                
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                   <div>
-                    <h4 className="text-xl font-bold text-foreground">{exp.role}</h4>
-                    <div className="flex items-center gap-2 text-muted-foreground mt-1">
-                      <Briefcase className="w-4 h-4" />
-                      <span className="text-sm font-medium">{exp.company}</span>
-                    </div>
+                    <h4 className="text-2xl font-bold group-hover:text-primary transition-colors">{exp.role}</h4>
+                    <p className="text-neutral-400 font-bold uppercase tracking-widest text-xs mt-1">{exp.company}</p>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground text-xs font-bold">
-                    <Calendar className="w-3 h-3" />
+                  <span className="px-5 py-2 glass-panel rounded-full text-xs font-black tracking-widest uppercase border-white/10 text-primary">
                     {exp.period}
-                  </div>
+                  </span>
                 </div>
-
-                <ul className="space-y-4">
-                  {exp.achievements.map((achievement, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-muted-foreground leading-relaxed">
-                      <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span>{achievement}</span>
+                
+                <p className="text-neutral-300 mb-8 leading-relaxed italic">{exp.description}</p>
+                
+                <ul className="grid md:grid-cols-2 gap-6">
+                  {exp.achievements.map((achievement, i) => (
+                    <li key={i} className="flex gap-4 group/item">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0 animate-pulse" />
+                      <p className="text-sm text-neutral-400 font-medium leading-relaxed group-hover/item:text-neutral-200 transition-colors">
+                        {achievement}
+                      </p>
                     </li>
                   ))}
                 </ul>

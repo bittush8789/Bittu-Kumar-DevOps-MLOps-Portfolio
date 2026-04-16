@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS } from '../constants';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight, Layers, Box, Cpu } from 'lucide-react';
+import { Tilt } from './ui/tilt';
 
 export function Projects() {
   const [filter, setFilter] = useState<'All' | 'DevOps' | 'MLOps'>('All');
@@ -14,23 +12,35 @@ export function Projects() {
   );
 
   return (
-    <section id="projects" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div>
-            <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-4">Portfolio</h2>
-            <h3 className="text-4xl font-bold tracking-tight">Featured Projects</h3>
-          </div>
+    <section id="projects" className="py-32 relative overflow-hidden bg-black">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] -z-10" />
+      
+      <div className="container mx-auto px-6 relative">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-6 flex items-center gap-3">
+              <span className="w-8 h-px bg-primary" />
+              Selected Works
+            </h2>
+            <h3 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
+              Architecting the <span className="italic font-light text-neutral-400">Future of Scale</span>
+            </h3>
+          </motion.div>
           
-          <div className="flex bg-card p-1 rounded-lg border border-border">
+          <div className="flex glass-panel p-1.5 rounded-2xl border-white/10 self-start">
             {['All', 'DevOps', 'MLOps'].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f as any)}
-                className={`px-6 py-2 text-sm font-bold rounded-md transition-all ${
+                className={`px-8 py-3 text-xs font-bold tracking-widest uppercase rounded-xl transition-all duration-500 ${
                   filter === f 
-                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20' 
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'bg-white text-black shadow-2xl' 
+                    : 'text-neutral-500 hover:text-white'
                 }`}
               >
                 {f}
@@ -39,95 +49,66 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, i) => (
               <motion.div
                 key={project.title}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="group h-full"
               >
-                <Card className="bg-card border-border h-full flex flex-col overflow-hidden group">
-                  <div className="h-48 bg-muted relative overflow-hidden">
-                    {project.image ? (
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        referrerPolicy="no-referrer"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
-                        <div className="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-primary tracking-tighter uppercase whitespace-pre opacity-50">
-                          {`ARCHITECTURE_DIAGRAM_V2.0\n[NODE_CLUSTER] -> [LOAD_BALANCER]\n[API_GATEWAY] -> [MICROSERVICES]\n[DATA_STORE] <- [ML_INFERENCE]`}
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute top-4 right-4 flex gap-2">
-                      {(project as any).isFeatured && (
-                        <Badge className="bg-primary text-primary-foreground border-none">
-                          Featured Resource
-                        </Badge>
-                      )}
-                      <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm border-border">
-                        {project.type}
-                      </Badge>
+                <Tilt className="h-full">
+                  <div className="glass-panel h-full rounded-[32px] overflow-hidden flex flex-col border-white/5 hover:border-primary/20 hover:bg-white/[0.05] transition-all duration-700 glow-hover">
+                  <div className="aspect-video relative overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                    <div className="absolute top-6 left-6 flex gap-2">
+                       <span className="px-3 py-1 bg-black/40 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase border border-white/10">
+                         {project.type}
+                       </span>
                     </div>
                   </div>
                   
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold group-hover:text-primary transition-colors">
-                      {project.title}
-                    </CardTitle>
-                  </CardHeader>
-                  
-                  <CardContent className="flex-grow space-y-6">
-                    <div>
-                      <h5 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Problem</h5>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {project.problem}
-                      </p>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <div className="flex items-start justify-between gap-4 mb-6">
+                      <h4 className="text-2xl font-bold tracking-tight leading-tight group-hover:text-primary transition-colors duration-500">
+                        {project.title}
+                      </h4>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-2xl hover:bg-primary hover:text-black transition-all duration-500">
+                        <Github size={20} />
+                      </a>
                     </div>
-
-                    <div>
-                      <h5 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Tech Stack</h5>
+                    
+                    <p className="text-neutral-400 text-sm leading-relaxed mb-8 flex-grow">
+                      {project.problem}
+                    </p>
+                    
+                    <div className="space-y-6">
                       <div className="flex flex-wrap gap-2">
-                        {project.stack.map((tech) => (
-                          <span key={tech} className="px-2 py-1 rounded bg-muted border border-border text-[10px] font-mono text-muted-foreground">
+                        {project.stack.slice(0, 4).map((tech) => (
+                          <span key={tech} className="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-neutral-300 border border-white/5 uppercase tracking-wider">
                             {tech}
                           </span>
                         ))}
                       </div>
+                      
+                      <button className="flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-primary group/link">
+                        Details
+                        <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
+                      </button>
                     </div>
-
-                    <div>
-                      <h5 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Key Features</h5>
-                      <ul className="space-y-2">
-                        {project.features.map((feature, idx) => (
-                          <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <ArrowRight className="w-3 h-3 text-primary mt-1 shrink-0" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-
-                  <div className="p-6 pt-0 mt-auto flex gap-4">
-                    <Button variant="outline" size="sm" className="w-full border-border hover:bg-muted gap-2">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full">
-                        <Github className="w-4 h-4" />
-                        View Repository
-                      </a>
-                    </Button>
                   </div>
-                </Card>
-              </motion.div>
+                </div>
+              </Tilt>
+            </motion.div>
             ))}
           </AnimatePresence>
         </div>
