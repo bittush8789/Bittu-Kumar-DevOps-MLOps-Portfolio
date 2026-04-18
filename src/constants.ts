@@ -33,28 +33,28 @@ export const CONTACT_INFO = {
 
 export const REMOTE_SERVICES = [
   {
+    title: 'LLMOps & RAG Pipelines',
+    description: 'Architecting production-grade LLM systems with Retrieval Augmented Generation (RAG), vector databases, and real-time observability.',
+    icon: 'Cpu',
+    tags: ['LangChain', 'Pinecone', 'LlamaIndex'],
+  },
+  {
+    title: 'MLOps Engineering',
+    description: 'Engineering end-to-end ML lifecycles—from automated training pipelines and versioning to scalable model serving and monitoring.',
+    icon: 'Workflow',
+    tags: ['Kubeflow', 'MLflow', 'DVC'],
+  },
+  {
+    title: 'Enterprise AI Solutions',
+    description: 'Developing intelligent agentic systems and custom AI solutions that solve complex business challenges at scale.',
+    icon: 'Box',
+    tags: ['Agentic AI', 'PyTorch', 'Transformers'],
+  },
+  {
     title: 'Cloud-Native DevOps',
-    description: 'Automating infrastructure with Terraform and managing Kubernetes clusters for scalable, remote-first applications.',
+    description: 'Building resilient, automated infrastructure using IaC and Kubernetes to support high-scale distributed applications.',
     icon: 'Cloud',
     tags: ['Kubernetes', 'Terraform', 'Helm'],
-  },
-  {
-    title: 'Remote MLOps Infrastructure',
-    description: 'Setting up end-to-end ML pipelines, model serving, and monitoring on cloud platforms (AWS/GCP) for distributed teams.',
-    icon: 'Workflow',
-    tags: ['Kubeflow', 'AWS SageMaker', 'MLflow'],
-  },
-  {
-    title: 'LLMOps & RAG Integration',
-    description: 'Building and deploying production-grade LLM applications with semantic search and observability.',
-    icon: 'Cpu',
-    tags: ['Pinecone', 'LangChain', 'FastAPI'],
-  },
-  {
-    title: 'AI Engineering Solutions',
-    description: 'Developing intelligent systems and agents that leverage state-of-the-art models to solve complex business problems.',
-    icon: 'Box',
-    tags: ['PyTorch', 'Transformers', 'Agentic AI'],
   },
 ];
 

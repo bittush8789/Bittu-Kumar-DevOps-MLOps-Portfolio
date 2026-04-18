@@ -13,6 +13,14 @@ export function Contact() {
     message: ''
   });
 
+  // Check session storage on mount
+  React.useEffect(() => {
+    const sent = sessionStorage.getItem('message_sent');
+    if (sent === 'true') {
+      setIsSuccess(true);
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -37,8 +45,8 @@ export function Contact() {
 
       if (response.ok) {
         setIsSuccess(true);
+        sessionStorage.setItem('message_sent', 'true');
         setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => setIsSuccess(false), 5000);
       }
     } catch (error) {
       console.error("Submission Error", error);
@@ -146,7 +154,31 @@ export function Contact() {
                 {/* Visual Accent */}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-bl-full opacity-0 group-hover/form:opacity-100 blur-[80px] transition-opacity duration-1000" />
                 
-                <form onSubmit={handleSubmit} className="space-y-12 relative z-10">
+                {isSuccess ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="h-full flex flex-col items-center justify-center text-center py-20 relative z-10"
+                  >
+                    <div className="w-24 h-24 rounded-full bg-emerald-500/20 flex items-center justify-center mb-8 border border-emerald-500/30">
+                      <Send className="text-emerald-500 w-10 h-10" />
+                    </div>
+                    <h4 className="text-3xl font-black mb-4">Message Sent Successfully!</h4>
+                    <p className="text-neutral-500 font-medium mb-10 max-w-xs">
+                      Thanks for reaching out. I'll get back to you as soon as possible.
+                    </p>
+                    <button 
+                      onClick={() => {
+                        setIsSuccess(false);
+                        sessionStorage.removeItem('message_sent');
+                      }}
+                      className="text-[10px] font-black tracking-[0.3em] uppercase text-primary hover:text-foreground transition-colors"
+                    >
+                      Send Another Message
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-12 relative z-10">
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -224,6 +256,7 @@ export function Contact() {
                     </Button>
                   </motion.div>
                 </form>
+                )}
               </div>
             </motion.div>
           </div>

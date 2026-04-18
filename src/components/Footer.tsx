@@ -9,13 +9,13 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative pt-24 pb-12 overflow-hidden transition-colors duration-700">
+    <footer className="relative pt-24 pb-12 overflow-hidden transition-colors duration-700 section-liquid">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-black/5 to-transparent" />
       <div className="absolute -bottom-24 -left-24 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
       <div className="absolute -bottom-24 -right-24 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10" />
 
-      <div className="container mx-auto px-6">
+      <div className="container-liquid relative">
         <div className="flex flex-col items-center text-center mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export function Footer() {
             <h2 className="text-sm font-bold tracking-[0.6em] text-primary uppercase mb-8">Get in Touch</h2>
             <a 
               href={`mailto:${CONTACT_INFO.email}`} 
-              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter hover:text-primary transition-colors duration-500 underline decoration-primary/30 underline-offset-[12px] hover:underline-offset-[20px] break-all px-4"
+              className="text-[clamp(1.2rem,7vw,4rem)] md:text-5xl lg:text-6xl font-black tracking-tighter hover:text-primary transition-colors duration-500 underline decoration-primary/30 underline-offset-[12px] hover:underline-offset-[20px] break-all px-4 block w-full"
             >
               {CONTACT_INFO.email}
             </a>
