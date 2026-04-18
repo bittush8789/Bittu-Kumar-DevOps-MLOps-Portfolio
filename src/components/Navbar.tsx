@@ -29,7 +29,7 @@ export function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4' : 'py-8'}`}>
       <div className="container mx-auto px-6">
-        <div className={`glass-panel rounded-full px-6 py-3 flex items-center justify-between transition-all duration-500 ${isScrolled ? 'bg-background/60 border-black/10 shadow-lg' : 'bg-transparent border-transparent'}`}>
+        <div className={`glass-panel rounded-full px-4 md:px-6 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ${isScrolled ? 'bg-background/60 border-black/10 shadow-lg' : 'bg-transparent border-transparent'}`}>
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
             <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black font-black text-lg transition-transform group-hover:rotate-12">
@@ -69,7 +69,7 @@ export function Navbar() {
               </a>
             </div>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 md:gap-2">
               <button
                 onClick={toggleTheme}
                 className="w-10 h-10 rounded-full glass-panel flex items-center justify-center border-white/10 hover:border-primary/50 transition-all duration-300 group"

@@ -17,6 +17,12 @@
     
     --radius-xl: 24px;
     --radius-2xl: 32px;
+
+    /* Liquid Spacing Variables */
+    --section-py: clamp(5rem, 10vw, 8rem);
+    --container-px: clamp(1.5rem, 5vw, 4rem);
+    --grid-gap: clamp(1.5rem, 3vw, 2.5rem);
+    --card-p: clamp(1.5rem, 4vw, 3rem);
 }
 
 :root {
@@ -220,11 +226,15 @@
 }
 
 @layer base {
+    html, body {
+        @apply overflow-x-hidden w-full max-w-full m-0 p-0;
+        scroll-behavior: smooth;
+    }
     * {
         @apply border-border selection:bg-primary/30 selection:text-primary;
     }
     body {
-        @apply bg-background text-foreground overflow-x-hidden text-[17px] sm:text-lg;
+        @apply bg-background text-foreground text-[16px] sm:text-lg;
         font-family: var(--font-sans);
         -webkit-font-smoothing: antialiased;
         background-attachment: fixed;
@@ -232,9 +242,8 @@
             radial-gradient(ellipse at 50% -30%, color-mix(in srgb, var(--primary-color) 15%, transparent) 0%, transparent 60%),
             radial-gradient(ellipse at 100% 100%, color-mix(in srgb, var(--accent-color) 10%, transparent) 0%, transparent 50%),
             radial-gradient(ellipse at 0% 50%, color-mix(in srgb, var(--primary-color) 5%, transparent) 0%, transparent 40%);
-        line-height: 1.7;
-        letter-spacing: -0.015em;
-
+        line-height: 1.6;
+        letter-spacing: -0.01em;
     }
     h1, h2, h3, h4 {
         font-family: var(--font-heading);
@@ -258,6 +267,29 @@
 
     .text-balance {
         text-wrap: balance;
+    }
+
+    .container-liquid {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--container-px);
+        padding-right: var(--container-px);
+        max-width: 1400px;
+    }
+
+    .section-liquid {
+        padding-top: var(--section-py);
+        padding-bottom: var(--section-py);
+    }
+
+    .grid-liquid {
+        display: grid;
+        gap: var(--grid-gap);
+    }
+
+    .card-liquid {
+        padding: var(--card-p);
     }
 
     .bg-grain {

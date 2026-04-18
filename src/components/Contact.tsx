@@ -58,79 +58,103 @@ export function Contact() {
           <div className="grid lg:grid-cols-2 gap-20 items-start">
             {/* Left Side: Info */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              variants={{
+                hidden: { opacity: 0, x: -50 },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    staggerChildren: 0.1,
+                    duration: 1,
+                    ease: [0.16, 1, 0.3, 1]
+                  }
+                }
+              }}
               className="space-y-12"
             >
-              <div>
-                <h2 className="text-sm font-bold tracking-[0.5em] text-primary uppercase mb-6 flex items-center gap-4">
-                  <span className="w-10 h-px bg-primary" />
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+                <h2 className="text-[12px] font-black tracking-[0.5em] text-primary uppercase mb-6 flex items-center gap-4">
+                  <span className="w-10 h-px bg-primary/50" />
                   Contact
                 </h2>
-                <h3 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8 leading-none">
-                  Let's <span className="text-primary italic font-light">Scale</span><br />Together.
+                <h3 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-10 leading-[0.85] italic">
+                  Let's <span className="text-neutral-500 font-light not-italic">Scale</span><br />
+                  <span className="not-italic text-foreground">Together.</span>
                 </h3>
-                <p className="text-neutral-500 text-xl font-medium leading-relaxed max-w-md">
+                <p className="text-neutral-500 text-2xl font-medium leading-relaxed max-w-md">
                   Have a complex engineering challenge? Let's build a solution that scales.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="space-y-8">
-                <div className="flex items-center gap-6 group">
-                  <div className="w-14 h-14 rounded-2xl glass-panel flex items-center justify-center border-black/5 group-hover:bg-primary group-hover:border-primary/50 transition-all duration-500">
-                    <Mail size={24} className="text-primary group-hover:text-black transition-colors" />
+              <div className="space-y-10">
+                <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-8 group cursor-default">
+                  <div className="w-16 h-16 rounded-[24px] glass-panel flex items-center justify-center border-white/5 group-hover:bg-primary group-hover:border-primary/40 transition-all duration-700 shadow-xl ring-1 ring-white/10">
+                    <Mail size={28} className="text-primary group-hover:text-black transition-all duration-700 group-hover:rotate-12" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-black text-primary/70 tracking-widest uppercase mb-1">Email Me</p>
-                    <p className="text-lg font-bold">{CONTACT_INFO.email}</p>
+                    <p className="text-[11px] font-black text-primary/70 tracking-[0.4em] uppercase mb-2">Email Me</p>
+                    <p className="text-xl font-black tracking-tight group-hover:text-primary transition-colors duration-500">{CONTACT_INFO.email}</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-6 group">
-                  <div className="w-14 h-14 rounded-2xl glass-panel flex items-center justify-center border-black/5 group-hover:bg-primary group-hover:border-primary/50 transition-all duration-500">
-                    <MapPin size={24} className="text-primary group-hover:text-black transition-colors" />
+                <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-8 group cursor-default">
+                  <div className="w-16 h-16 rounded-[24px] glass-panel flex items-center justify-center border-white/5 group-hover:bg-primary group-hover:border-primary/40 transition-all duration-700 shadow-xl ring-1 ring-white/10">
+                    <MapPin size={28} className="text-primary group-hover:text-black transition-all duration-700 group-hover:rotate-12" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-black text-primary/70 tracking-widest uppercase mb-1">Location</p>
-                    <p className="text-lg font-bold">{CONTACT_INFO.location}</p>
+                    <p className="text-[11px] font-black text-primary/70 tracking-[0.4em] uppercase mb-2">Location</p>
+                    <p className="text-xl font-black tracking-tight group-hover:text-primary transition-colors duration-500">{CONTACT_INFO.location}</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4 pt-8 border-t border-black/5 max-w-sm">
-                <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="p-4 glass-panel rounded-2xl border-black/5 hover:bg-primary hover:text-black transition-all duration-500" title="GitHub">
-                  <Github size={20} />
-                </a>
-                <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="p-4 glass-panel rounded-2xl border-black/5 hover:bg-primary hover:text-black transition-all duration-500" title="LinkedIn">
-                  <Linkedin size={20} />
-                </a>
-                <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="p-4 glass-panel rounded-2xl border-black/5 hover:bg-primary hover:text-black transition-all duration-500" title="Instagram">
-                  <Instagram size={20} />
-                </a>
-                <a href={CONTACT_INFO.hashnode} target="_blank" rel="noopener noreferrer" className="p-4 glass-panel rounded-2xl border-black/5 hover:bg-primary hover:text-black transition-all duration-500" title="Hashnode Blog">
-                  <PenTool size={20} />
-                </a>
-              </div>
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="flex flex-wrap items-center gap-5 pt-12 border-t border-white/5 max-w-sm">
+                {[
+                  { icon: Github, href: CONTACT_INFO.github, label: 'GitHub' },
+                  { icon: Linkedin, href: CONTACT_INFO.linkedin, label: 'LinkedIn' },
+                  { icon: Instagram, href: CONTACT_INFO.instagram, label: 'Instagram' },
+                  { icon: PenTool, href: CONTACT_INFO.hashnode, label: 'Hashnode' }
+                ].map((social, i) => (
+                  <motion.a 
+                    key={i}
+                    whileHover={{ scale: 1.1, y: -5, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-5 glass-panel rounded-2xl border-white/5 hover:bg-primary hover:text-black transition-all duration-500 shadow-2xl ring-1 ring-white/10" 
+                    title={social.label}
+                  >
+                    <social.icon size={22} />
+                  </motion.a>
+                ))}
+              </motion.div>
             </motion.div>
 
             {/* Right Side: Form */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 50, rotateY: -10 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative perspective-2000"
             >
-              <div className="glass-panel p-10 md:p-14 rounded-[48px] border-black/5 relative overflow-hidden shadow-2xl">
+              <div className="glass-panel p-10 md:p-16 rounded-[48px] md:rounded-[64px] border-white/5 relative overflow-hidden shadow-2xl group/form">
                 {/* Visual Accent */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full" />
+                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-bl-full opacity-0 group-hover/form:opacity-100 blur-[80px] transition-opacity duration-1000" />
                 
-                <form onSubmit={handleSubmit} className="space-y-10">
-                  <div className="space-y-4">
-                    <label className="text-[11px] font-black tracking-[0.3em] uppercase text-neutral-500 ml-1 flex items-center gap-2">
-                      <User size={12} className="text-primary" /> Full Name
+                <form onSubmit={handleSubmit} className="space-y-12 relative z-10">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="space-y-5"
+                  >
+                    <label className="text-[11px] font-black tracking-[0.4em] uppercase text-neutral-500 ml-1 flex items-center gap-3">
+                      <User size={14} className="text-primary" /> Full Name
                     </label>
                     <input 
                       required
@@ -138,13 +162,18 @@ export function Contact() {
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-black/5 border border-black/5 rounded-2xl px-8 py-5 outline-none focus:border-primary/50 transition-all duration-300 font-medium text-foreground placeholder:text-neutral-400"
+                      className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-8 py-6 outline-none focus:border-primary/40 transition-all duration-500 font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05]"
                     />
-                  </div>
+                  </motion.div>
                   
-                  <div className="space-y-4">
-                    <label className="text-[11px] font-black tracking-[0.3em] uppercase text-neutral-500 ml-1 flex items-center gap-2">
-                      <Mail size={12} className="text-primary" /> Email Address
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="space-y-5"
+                  >
+                    <label className="text-[11px] font-black tracking-[0.4em] uppercase text-neutral-500 ml-1 flex items-center gap-3">
+                      <Mail size={14} className="text-primary" /> Email Address
                     </label>
                     <input 
                       required
@@ -152,13 +181,18 @@ export function Contact() {
                       placeholder="john@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-black/5 border border-black/5 rounded-2xl px-8 py-5 outline-none focus:border-primary/50 transition-all duration-300 font-medium text-foreground placeholder:text-neutral-400"
+                      className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-8 py-6 outline-none focus:border-primary/40 transition-all duration-500 font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05]"
                     />
-                  </div>
+                  </motion.div>
                   
-                  <div className="space-y-4">
-                    <label className="text-[11px] font-black tracking-[0.3em] uppercase text-neutral-500 ml-1 flex items-center gap-2">
-                      <MessageSquare size={12} className="text-primary" /> Your Message
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="space-y-5"
+                  >
+                    <label className="text-[11px] font-black tracking-[0.4em] uppercase text-neutral-500 ml-1 flex items-center gap-3">
+                      <MessageSquare size={14} className="text-primary" /> Your Message
                     </label>
                     <textarea 
                       required
@@ -166,23 +200,29 @@ export function Contact() {
                       placeholder="How can I help you?"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-black/5 border border-black/5 rounded-[32px] px-8 py-6 outline-none focus:border-primary/50 transition-all duration-300 font-medium text-foreground placeholder:text-neutral-400 resize-none"
+                      className="w-full bg-white/[0.03] border border-white/5 rounded-[32px] px-8 py-8 outline-none focus:border-primary/40 transition-all duration-500 font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05] resize-none"
                     />
-                  </div>
+                  </motion.div>
                   
-                  <Button 
-                    type="submit"
-                    disabled={isSubmitting || isSuccess}
-                    className={`w-full h-16 ${isSuccess ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-primary hover:bg-black'} text-black font-black tracking-[0.2em] uppercase rounded-full transition-all duration-500 hover:scale-[1.02] flex items-center justify-center gap-3 active:scale-95 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed`}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
                   >
-                    {isSubmitting ? (
-                      <>SENDING... <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" /></>
-                    ) : isSuccess ? (
-                      <>MESSAGE SENT! ✅</>
-                    ) : (
-                      <>SEND MESSAGE <Send className="w-4 h-4" /></>
-                    )}
-                  </Button>
+                    <Button 
+                      type="submit"
+                      disabled={isSubmitting || isSuccess}
+                      className={`w-full h-20 ${isSuccess ? 'bg-emerald-500 text-white' : 'bg-primary text-black'} font-black tracking-[0.3em] uppercase rounded-full transition-all duration-700 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-4 shadow-2xl disabled:opacity-70 disabled:cursor-not-allowed text-xs md:text-sm`}
+                    >
+                      {isSubmitting ? (
+                        <>SENDING... <div className="w-6 h-6 border-2 border-black/20 border-t-black rounded-full animate-spin" /></>
+                      ) : isSuccess ? (
+                        <>MESSAGE SENT! ✅</>
+                      ) : (
+                        <>SEND MESSAGE <Send className="w-5 h-5" /></>
+                      )}
+                    </Button>
+                  </motion.div>
                 </form>
               </div>
             </motion.div>

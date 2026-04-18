@@ -31,32 +31,32 @@ export default function App() {
       <CustomCursor />
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 bg-primary z-[100] origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-primary z-[100] origin-left"
         style={{ scaleX }}
       />
       
       <Scene3D />
       
-      {/* Large Background Text */}
-      <div className="fixed inset-0 pointer-events-none select-none -z-40 flex flex-col justify-around opacity-[0.06] font-black leading-none uppercase">
+      {/* Large Background Text - Responsive scaling */}
+      <div className="fixed inset-0 pointer-events-none select-none -z-40 flex flex-col justify-around opacity-[0.04] font-black leading-none uppercase overflow-hidden">
         <motion.div 
           animate={{ x: [-20, 20, -20] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="text-[25vw] tracking-tighter -ml-10"
+          className="text-[30vw] md:text-[25vw] tracking-tighter -ml-10"
         >
           DevOps
         </motion.div>
         <motion.div 
           animate={{ x: [20, -20, 20] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="text-[25vw] tracking-tighter ml-auto -mr-10"
+          className="text-[30vw] md:text-[25vw] tracking-tighter ml-auto -mr-10"
         >
           MLOps
         </motion.div>
       </div>
 
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <About />
         <Skills />
