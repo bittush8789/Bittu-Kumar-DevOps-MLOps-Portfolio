@@ -1,16 +1,25 @@
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS } from '../constants';
-import { Github, ExternalLink, ArrowRight, Layers, Box, Cpu } from 'lucide-react';
+import { Github, ArrowRight } from 'lucide-react';
 import { Tilt } from './ui/tilt';
 import { Project3DIcon } from './Project3DIcon';
+
+// Static config — allocated once at module scope
+const FILTER_TYPES = ['All', 'DevOps', 'MLOps', 'LLMOps'] as const;
+const cardTransition = { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as const;
 
 export function Projects() {
   const [filter, setFilter] = useState<'All' | 'DevOps' | 'MLOps' | 'LLMOps'>('All');
 
-  const filteredProjects = PROJECTS.filter(
-    (p) => filter === 'All' || p.type === filter
+  // O(n) filter — only recomputes when filter changes, not every render
+  const filteredProjects = useMemo(
+    () => filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.type === filter),
+    [filter]
   );
+
+  // Stable callback reference — no new function on every render
+  const handleFilter = useCallback((f: typeof filter) => setFilter(f), []);
 
   return (
     <section id="projects" className="section-liquid relative overflow-hidden transition-colors duration-700">
@@ -47,10 +56,10 @@ export function Projects() {
           </motion.div>
           
           <div className="flex flex-wrap gap-2 glass-panel p-1.5 md:p-2 rounded-2xl border-white/10 self-start">
-            {['All', 'DevOps', 'MLOps', 'LLMOps'].map((f) => (
+            {FILTER_TYPES.map((f) => (
               <button
                 key={f}
-                onClick={() => setFilter(f as any)}
+                onClick={() => handleFilter(f as any)}
                 className={`flex-1 md:flex-none px-4 md:px-8 py-3 md:py-4 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase rounded-xl transition-all duration-500 ${
                   filter === f 
                     ? 'bg-primary text-black shadow-[0_0_20px_rgba(255,179,25,0.3)]' 
@@ -72,11 +81,7 @@ export function Projects() {
                 initial={{ opacity: 0, y: 50, rotateX: 25, z: -100 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
                 viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: i * 0.1,
-                  ease: [0.16, 1, 0.3, 1]
-                }}
+                transition={{ ...cardTransition, delay: i * 0.1 }}
                 className="group h-full"
               >
                 <Tilt className="h-full">
@@ -90,6 +95,8 @@ export function Projects() {
                     <img 
                       src={project.image} 
                       alt={project.title} 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:blur-md"
                     />
                     

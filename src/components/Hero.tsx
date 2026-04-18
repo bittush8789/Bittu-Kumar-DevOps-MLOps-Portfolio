@@ -11,14 +11,22 @@ export function Hero() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   useEffect(() => {
+    let rafId: number;
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 40,
-        y: (e.clientY / window.innerHeight - 0.5) * 40,
+      // Throttle via rAF — fires once per frame (~16ms) instead of every event
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setMousePosition({
+          x: (e.clientX / window.innerWidth - 0.5) * 40,
+          y: (e.clientY / window.innerHeight - 0.5) * 40,
+        });
       });
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
