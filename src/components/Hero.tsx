@@ -3,10 +3,12 @@ import { ChevronRight, Zap, Terminal, Activity } from 'lucide-react';
 import { Button } from './ui/button';
 import { Tilt } from './ui/tilt';
 import { Magnetic } from './ui/magnetic';
+import { ResumeModal } from './ResumeModal';
 import React, { useState, useEffect } from 'react';
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -119,10 +121,13 @@ export function Hero() {
                   
                   <Magnetic>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                      <Button size="lg" variant="outline" className="h-16 w-full sm:w-auto px-10 glass-panel border-white/10 hover:border-primary/50 text-foreground font-black tracking-widest uppercase rounded-[24px] group transition-all duration-700">
-                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                          Download CV
-                        </a>
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        onClick={() => setIsResumeModalOpen(true)}
+                        className="h-16 w-full sm:w-auto px-10 glass-panel border-white/10 hover:border-primary/50 text-foreground font-black tracking-widest uppercase rounded-[24px] group transition-all duration-700"
+                      >
+                        Download CV
                       </Button>
                     </motion.div>
                   </Magnetic>
@@ -236,6 +241,9 @@ export function Hero() {
            <div className="w-1 h-2 bg-primary rounded-full" />
         </div>
       </motion.div>
+
+      {/* Resume Selection Modal */}
+      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
     </section>
   );
 }
