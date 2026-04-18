@@ -300,14 +300,14 @@ cp .env.example .env
 
 # 4. Start dev server
 npm run dev
-# → http://localhost:3000
+# Open: http://localhost:3000
 ```
 
 ### Docker (Local)
 ```bash
 docker build -t bittu-portfolio:latest .
 docker run -d -p 8080:80 bittu-portfolio:latest
-# → http://localhost:8080
+# Open: http://localhost:8080
 ```
 
 ---
@@ -331,7 +331,7 @@ Push to main
   [2] npm build
   [3] Docker build + ECR push
   [4] Update k8s/deployment.yaml → git push
-          ArgoCD detects change → auto-deploys to EKS
+          ArgoCD detects change → auto-deploys to EKS ✅
 ```
 
 ### Manual Deploy
@@ -346,15 +346,15 @@ kubectl get svc bittu-portfolio-service
 ## 📊 Monitoring
 
 ```bash
-# Install Prometheus + Grafana
+# Install Prometheus + Grafana via Helm
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/prometheus -n monitoring --create-namespace
 helm install grafana grafana/grafana -n monitoring --set service.type=LoadBalancer
 
-# Access
+# Access dashboards
 kubectl port-forward -n monitoring svc/prometheus-server 9090:80
 kubectl port-forward -n monitoring svc/grafana 3000:80
-# Grafana: admin / (get from secret)
+# Grafana login: admin / (get password from secret)
 # Import dashboard ID: 3119
 ```
 
@@ -376,16 +376,18 @@ kubectl port-forward -n monitoring svc/grafana 3000:80
 
 | Platform | Link |
 |---|---|
-| Email | bittush9534@gmail.com |
-| LinkedIn | linkedin.com/in/bittu-kumar-54ab13254 |
-| GitHub | github.com/bittush8789 |
-| Blog | bittublog.hashnode.dev |
+| 📧 Email | [bittush9534@gmail.com](mailto:bittush9534@gmail.com) |
+| 💼 LinkedIn | [bittu-kumar-54ab13254](https://www.linkedin.com/in/bittu-kumar-54ab13254/) |
+| 🐙 GitHub | [bittush8789](https://github.com/bittush8789) |
+| 📝 Blog | [bittublog.hashnode.dev](https://bittublog.hashnode.dev/) |
+| 📸 Instagram | [@bittush8789](https://www.instagram.com/bittush8789/) |
 
 ---
 
 <div align="center">
 
 **Built with ❤️ by Bittu Kumar**
+
 *DevOps + MLOps Engineer | EXL Service India | New Delhi 🇮🇳*
 
 </div>
