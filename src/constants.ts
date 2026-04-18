@@ -22,13 +22,16 @@ export const NAV_LINKS = [
   { name: 'Contact', href: '#contact' },
 ];
 
+export const CONTACT_INFO = {
+  email: 'bittush9534@gmail.com',
+  location: 'New Delhi, India',
+  linkedin: 'https://www.linkedin.com/in/bittu-kumar-54ab13254/',
+  github: 'https://github.com/bittush8789',
+  instagram: 'https://www.instagram.com/bittush8789/',
+  hashnode: 'https://bittublog.hashnode.dev/',
+};
+
 export const REMOTE_SERVICES = [
-  {
-    title: 'Remote MLOps Infrastructure',
-    description: 'Setting up end-to-end ML pipelines, model serving, and monitoring on cloud platforms (AWS/GCP) for distributed teams.',
-    icon: 'Workflow',
-    tags: ['Kubeflow', 'AWS SageMaker', 'MLflow'],
-  },
   {
     title: 'Cloud-Native DevOps',
     description: 'Automating infrastructure with Terraform and managing Kubernetes clusters for scalable, remote-first applications.',
@@ -36,16 +39,22 @@ export const REMOTE_SERVICES = [
     tags: ['Kubernetes', 'Terraform', 'Helm'],
   },
   {
-    title: 'GitOps & CI/CD Automation',
-    description: 'Implementing secure, automated deployment workflows that allow teams to ship code from anywhere with confidence.',
-    icon: 'Infinity',
-    tags: ['ArgoCD', 'GitHub Actions', 'Jenkins'],
+    title: 'Remote MLOps Infrastructure',
+    description: 'Setting up end-to-end ML pipelines, model serving, and monitoring on cloud platforms (AWS/GCP) for distributed teams.',
+    icon: 'Workflow',
+    tags: ['Kubeflow', 'AWS SageMaker', 'MLflow'],
   },
   {
     title: 'LLMOps & RAG Integration',
     description: 'Building and deploying production-grade LLM applications with semantic search and observability.',
     icon: 'Cpu',
-    tags: ['Pinecone', 'LangSmith', 'FastAPI'],
+    tags: ['Pinecone', 'LangChain', 'FastAPI'],
+  },
+  {
+    title: 'AI Engineering Solutions',
+    description: 'Developing intelligent systems and agents that leverage state-of-the-art models to solve complex business problems.',
+    icon: 'Box',
+    tags: ['PyTorch', 'Transformers', 'Agentic AI'],
   },
 ];
 
@@ -68,21 +77,21 @@ export const CERTIFICATES = [
     title: 'LFS147: Introduction to AI/ML Toolkits with Kubeflow',
     issuer: 'The Linux Foundation',
     date: '2024',
-    link: '#',
+    link: 'https://www.credly.com/badges/ff921ead-00e2-46c5-a45d-e733b4a08138/linked_in_profile',
     category: 'MLOps',
   },
   {
     title: 'Docker – Level 1',
     issuer: 'KodeKloud Engineer',
     date: '2023',
-    link: '#',
+    link: 'https://engineer.kodekloud.com/certificate-verification/72aaa4dd-7c9c-47a4-903d-7eab4e4b76bd',
     category: 'DevOps',
   },
   {
     title: 'Kubernetes – Level 1',
     issuer: 'KodeKloud Engineer',
     date: '2023',
-    link: '#',
+    link: 'https://engineer.kodekloud.com/certificate-verification/3cee0cd3-3868-4c7b-9ad5-65ef8a303e88',
     category: 'DevOps',
   },
 ];

@@ -1,9 +1,41 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sphere, PerspectiveCamera } from '@react-three/drei';
+import { Float, MeshDistortMaterial, Sphere, PerspectiveCamera, Points, PointMaterial, Torus, Icosahedron } from '@react-three/drei';
 import * as THREE from 'three';
 
-function FloatingShape({ position, color, size, speed, distort }: { position: [number, number, number], color: string, size: number, speed: number, distort: number }) {
+function FloatingParticles({ count = 1000 }) {
+  const points = useMemo(() => {
+    const p = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      p[i * 3] = (Math.random() - 0.5) * 20;
+      p[i * 3 + 1] = (Math.random() - 0.5) * 20;
+      p[i * 3 + 2] = (Math.random() - 0.5) * 20;
+    }
+    return p;
+  }, [count]);
+
+  const pointsRef = useRef<THREE.Points>(null!);
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    pointsRef.current.rotation.y = t * 0.05;
+    pointsRef.current.rotation.x = t * 0.02;
+  });
+
+  return (
+    <Points ref={pointsRef} positions={points} stride={3} frustumCulled={false}>
+      <PointMaterial
+        transparent
+        color="#888888"
+        size={0.02}
+        sizeAttenuation={true}
+        depthWrite={false}
+        opacity={0.4}
+      />
+    </Points>
+  );
+}
+
+function FloatingShape({ position, color, size, speed, distort, type = 'sphere' }: { position: [number, number, number], color: string, size: number, speed: number, distort: number, type?: 'sphere' | 'torus' | 'icosahedron' }) {
   const mesh = useRef<THREE.Mesh>(null!);
   
   useFrame((state) => {
@@ -11,9 +43,12 @@ function FloatingShape({ position, color, size, speed, distort }: { position: [n
     mesh.current.position.y += Math.sin(t * speed) * 0.002;
   });
 
+  const Geometry = type === 'torus' ? Torus : type === 'icosahedron' ? Icosahedron : Sphere;
+  const args = type === 'torus' ? [size, 0.4, 32, 100] : type === 'icosahedron' ? [size, 0] : [size, 64, 64];
+
   return (
     <Float speed={speed} rotationIntensity={2} floatIntensity={2}>
-      <Sphere ref={mesh} position={position} args={[size, 64, 64]}>
+      <Geometry ref={mesh} position={position} args={args as any}>
         <MeshDistortMaterial
           color={color}
           speed={speed}
@@ -22,9 +57,9 @@ function FloatingShape({ position, color, size, speed, distort }: { position: [n
           metalness={0.5}
           roughness={0.2}
           transparent
-          opacity={0.3}
+          opacity={0.25}
         />
-      </Sphere>
+      </Geometry>
     </Float>
   );
 }
@@ -57,20 +92,25 @@ export function Scene3D() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-50 pointer-events-none opacity-40">
+    <div className="fixed inset-0 -z-50 pointer-events-none opacity-30">
       <Canvas>
         <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={75} />
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} color={themeColors.primary} />
-        <pointLight position={[-10, -10, -10]} intensity={1} color={themeColors.accent} />
+        <ambientLight intensity={0.2} />
+        <pointLight position={[10, 10, 10]} intensity={0.6} color={themeColors.primary} />
+        <pointLight position={[-10, -10, -10]} intensity={0.6} color={themeColors.accent} />
         
-        <FloatingShape position={[-4, 2, -2]} color={themeColors.primary} size={1.5} speed={2} distort={0.4} />
-        <FloatingShape position={[4, -2, -4]} color={themeColors.accent} size={2} speed={1.5} distort={0.5} />
-        <FloatingShape position={[0, -4, -6]} color="#ffffff" size={0.8} speed={3} distort={0.3} />
+        <FloatingShape position={[-4, 2, -2]} color={themeColors.primary} size={1.2} speed={2} distort={0.4} type="torus" />
+        <FloatingShape position={[4, -2, -4]} color={themeColors.accent} size={1.8} speed={1.5} distort={0.5} type="icosahedron" />
+        <FloatingShape position={[0, -4, -6]} color="#000000" size={1} speed={3} distort={0.3} />
+        <FloatingShape position={[-6, -3, -8]} color={themeColors.primary} size={0.8} speed={1.2} distort={0.6} type="icosahedron" />
+        <FloatingShape position={[6, 4, -5]} color={themeColors.accent} size={1.5} speed={2.5} distort={0.2} type="torus" />
         
+        <FloatingParticles />
         <Rig />
       </Canvas>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-color)] via-transparent to-[var(--bg-color)]" />
     </div>
   );
 }
+
+

@@ -4,7 +4,7 @@ import { ArrowRight, Calendar, Clock, ExternalLink } from 'lucide-react';
 
 export function Blog() {
   return (
-    <section id="blog" className="py-32 relative bg-background overflow-hidden transition-colors duration-700">
+    <section id="blog" className="py-32 relative overflow-hidden transition-colors duration-700">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
           <div>
@@ -12,15 +12,15 @@ export function Blog() {
               <span className="w-8 h-px bg-primary" />
               Journal
             </h2>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tighter">
-              Latest <span className="italic font-light text-neutral-400">Insights</span>
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter">
+              Latest <span className="italic font-light text-neutral-500">Insights</span>
             </h3>
           </div>
           <a 
             href="https://bittublog.hashnode.dev/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-8 py-3 glass-panel rounded-full text-xs font-black tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-3"
+            className="px-8 py-3 glass-panel rounded-full text-xs font-black tracking-widest uppercase hover:bg-black hover:text-white transition-all duration-500 flex items-center gap-3 border-black/5"
           >
             Explore All <ExternalLink size={14} />
           </a>
@@ -36,7 +36,7 @@ export function Blog() {
               transition={{ delay: i * 0.1 }}
               className="group"
             >
-              <a href={post.link} target="_blank" rel="noopener noreferrer" className="block border-b border-white/5 py-12 group-hover:border-primary/30 transition-colors">
+              <a href={post.link} target="_blank" rel="noopener noreferrer" className="block border-b border-black/5 py-12 group-hover:border-primary/30 transition-colors">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
                   <div className="flex-grow">
                     <div className="flex items-center gap-4 text-[10px] font-black tracking-widest uppercase text-neutral-500 mb-4">
@@ -45,7 +45,7 @@ export function Blog() {
                       <span className="flex items-center gap-1.5"><Clock size={12} /> {post.readTime}</span>
                     </div>
                     <h4 className="text-3xl md:text-4xl font-bold group-hover:text-primary transition-colors mb-4">{post.title}</h4>
-                    <p className="text-neutral-400 text-lg font-light leading-relaxed max-w-2xl">{post.excerpt}</p>
+                    <p className="text-neutral-500 text-lg font-light leading-relaxed max-w-2xl">{post.excerpt}</p>
                   </div>
                   <div className="shrink-0">
                     <div className="w-16 h-16 rounded-full glass-panel flex items-center justify-center group-hover:bg-primary group-hover:rotate-45 transition-all duration-700">

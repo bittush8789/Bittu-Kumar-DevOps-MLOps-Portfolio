@@ -12,7 +12,7 @@ export function Projects() {
   );
 
   return (
-    <section id="projects" className="py-32 relative overflow-hidden bg-background transition-colors duration-700">
+    <section id="projects" className="py-32 relative overflow-hidden transition-colors duration-700">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] -z-10" />
       
@@ -27,8 +27,8 @@ export function Projects() {
               <span className="w-8 h-px bg-primary/50" />
               Selected Works
             </h2>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
-              Architecting the <span className="italic font-light text-neutral-400">Future of Scale</span>
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-balance">
+              Architecting the <span className="italic font-light text-neutral-500">Future of Scale</span>
             </h3>
           </motion.div>
           
@@ -40,7 +40,7 @@ export function Projects() {
                 className={`px-6 md:px-8 py-3.5 text-xs md:text-sm font-black tracking-widest uppercase rounded-xl transition-all duration-500 ${
                   filter === f 
                     ? 'bg-primary text-black shadow-[0_0_20px_rgba(255,179,25,0.3)]' 
-                    : 'text-neutral-500 hover:text-white'
+                    : 'text-neutral-500 hover:text-foreground'
                 }`}
               >
                 {f}
@@ -63,13 +63,15 @@ export function Projects() {
               >
                 <Tilt className="h-full">
                   <div className="glass-panel h-full rounded-[40px] overflow-hidden flex flex-col border-white/5 hover:border-primary/20 hover:bg-white/[0.05] transition-all duration-700 glow-hover relative">
-                  <div className="aspect-video relative overflow-hidden">
+                  <div className="aspect-video relative overflow-hidden group/img-container">
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                    {/* Theme-based Color Filter */}
+                    <div className="absolute inset-0 bg-primary/20 mix-blend-color opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 pointer-events-none" />
                     <div className="absolute top-6 left-6 flex gap-2">
                        <span className="px-5 py-2 bg-black/60 backdrop-blur-md rounded-full text-[12px] font-black tracking-widest uppercase border border-white/10 text-white">
                          {project.type}
@@ -87,20 +89,20 @@ export function Projects() {
                       </a>
                     </div>
                     
-                    <p className="text-neutral-300 text-[17px] leading-relaxed mb-8 flex-grow font-medium">
+                    <p className="text-foreground text-[17px] leading-relaxed mb-8 flex-grow font-medium">
                       {project.problem}
                     </p>
                     
                     <div className="space-y-8 mt-auto">
                       <div className="flex flex-wrap gap-2.5">
                         {project.stack.slice(0, 5).map((tech) => (
-                          <span key={tech} className="px-3.5 py-1.5 bg-white/5 rounded-xl text-[11px] font-black text-neutral-400 border border-white/5 uppercase tracking-widest">
+                          <span key={tech} className="px-3.5 py-1.5 bg-black/5 rounded-xl text-[11px] font-black text-neutral-500 border border-black/5 uppercase tracking-widest">
                             {tech}
                           </span>
                         ))}
                       </div>
                       
-                      <button className="flex items-center gap-3 text-[12px] font-black tracking-[0.3em] uppercase text-primary group/link border-t border-white/5 pt-6 w-full hover:text-white transition-colors">
+                      <button className="flex items-center gap-3 text-[12px] font-black tracking-[0.3em] uppercase text-primary group/link border-t border-black/5 pt-6 w-full hover:text-foreground transition-colors">
                         Explore Pipeline
                         <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-2" />
                       </button>

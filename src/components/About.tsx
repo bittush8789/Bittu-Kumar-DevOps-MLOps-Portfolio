@@ -4,7 +4,7 @@ import { Award, Briefcase, GraduationCap, MapPin } from 'lucide-react';
 
 export function About() {
   return (
-    <section id="about" className="py-32 relative bg-background transition-colors duration-700">
+    <section id="about" className="py-32 relative transition-colors duration-700">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <motion.div
@@ -14,7 +14,7 @@ export function About() {
             transition={{ duration: 1 }}
             className="relative"
           >
-            <div className="relative aspect-square max-w-md mx-auto">
+            <div className="relative aspect-square max-w-lg mx-auto">
               {/* Animated Rings */}
               <div className="absolute inset-x-0 inset-y-0 rounded-full border border-primary/20 animate-spin-slow" />
               <div className="absolute inset-x-10 inset-y-10 rounded-full border border-primary/10 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '15s' }} />
@@ -53,9 +53,9 @@ export function About() {
                  About Me
               </h2>
               <h3 className="text-4xl md:text-5xl font-bold tracking-tighter mb-8 leading-tight">
-                Solving Complex <span className="italic font-light text-neutral-300">Engineering</span> Problems
+                Solving Complex <span className="italic font-light text-neutral-500">Engineering</span> Problems
               </h3>
-              <p className="text-neutral-300 text-lg md:text-xl leading-relaxed mb-10 font-medium">
+              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-10 font-medium">
                 I am a DevOps and MLOps Engineer passionate about building scalable, 
                 high-performance infra that empowers intelligent applications. 
                 With deep expertise in cloud architectures and model orchestration, 
@@ -67,14 +67,14 @@ export function About() {
                   <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <MapPin className="text-primary" size={24} />
                   </div>
-                  <h4 className="font-bold text-neutral-200 mb-1">Based in</h4>
+                  <h4 className="font-bold text-foreground mb-1">Based in</h4>
                   <p className="text-sm text-neutral-500 font-medium">Noida, India</p>
                 </div>
                 <div className="glass-panel p-6 rounded-3xl border-white/5 group hover:bg-white/5 transition-colors">
                   <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Briefcase className="text-primary" size={24} />
                   </div>
-                  <h4 className="font-bold text-neutral-200 mb-1">Experience</h4>
+                  <h4 className="font-bold text-foreground mb-1">Experience</h4>
                   <p className="text-sm text-neutral-500 font-medium">EXL Service (Present)</p>
                 </div>
               </div>
@@ -84,8 +84,8 @@ export function About() {
       </div>
       
       {/* Background Text */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden whitespace-nowrap opacity-5 pointer-events-none select-none">
-        <p className="text-[20vw] font-black leading-none tracking-tighter text-white">DEVOPS•MLOPS•CLOUD•AI•</p>
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden whitespace-nowrap opacity-[0.06] pointer-events-none select-none">
+        <p className="text-[20vw] font-black leading-none tracking-tighter text-foreground">DEVOPS•MLOPS•CLOUD•AI•</p>
       </div>
     </section>
   );
