@@ -1,0 +1,157 @@
+name: 🚀 CI/CD Pipeline — Bittu Portfolio
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: bittu-portfolio
+  EKS_CLUSTER: bittu-portfolio-cluster
+
+jobs:
+  # ──────────────────────────────────────────────────
+  # JOB 1 — DevSecOps: Security Scanning
+  # ──────────────────────────────────────────────────
+  security-scan:
+    name: 🔒 Security Scan (Trivy)
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Trivy — Scan filesystem for CVEs
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        severity: 'HIGH,CRITICAL'
+        exit-code: '0'
+
+    - name: Trivy — Scan for hardcoded secrets
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        scanners: 'secret'
+        exit-code: '0'
+
+  # ──────────────────────────────────────────────────
+  # JOB 2 — Build React App
+  # ──────────────────────────────────────────────────
+  build:
+    name: 🏗️ Build Application
+    runs-on: ubuntu-latest
+    needs: security-scan
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build production bundle
+      run: npm run build
+      env:
+        VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
+
+    - name: Upload dist artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: dist/
+        retention-days: 1
+
+  # ──────────────────────────────────────────────────
+  # JOB 3 — Docker Build + Image Scan + ECR Push
+  # ──────────────────────────────────────────────────
+  docker:
+    name: 🐳 Docker Build, Scan & Push
+    runs-on: ubuntu-latest
+    needs: build
+    outputs:
+      image-uri: ${{ steps.push.outputs.image-uri }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build Docker image
+      id: build
+      run: |
+        IMAGE_URI=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+        docker build -t $IMAGE_URI .
+        echo "image-uri=$IMAGE_URI" >> $GITHUB_OUTPUT
+
+    - name: Trivy — Scan Docker image for CVEs
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: ${{ steps.build.outputs.image-uri }}
+        severity: 'HIGH,CRITICAL'
+        exit-code: '0'
+
+    - name: Push image to ECR
+      id: push
+      run: |
+        docker push ${{ steps.build.outputs.image-uri }}
+        echo "image-uri=${{ steps.build.outputs.image-uri }}" >> $GITHUB_OUTPUT
+
+  # ──────────────────────────────────────────────────
+  # JOB 4 — GitOps: Update k8s manifest → ArgoCD deploys
+  # ──────────────────────────────────────────────────
+  gitops-deploy:
+    name: 🔁 GitOps — Update Manifest (ArgoCD)
+    runs-on: ubuntu-latest
+    needs: docker
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout this repo (k8s manifests are here)
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITOPS_PAT }}
+
+    - name: Update image tag in deployment.yaml
+      run: |
+        NEW_IMAGE="${{ needs.docker.outputs.image-uri }}"
+        echo "Updating image to: $NEW_IMAGE"
+        # Replace the image line with new ECR image URI
+        sed -i "s|image:.*amazonaws.com/bittu-portfolio:.*|image: $NEW_IMAGE|g" \
+          k8s/deployment.yaml
+
+    - name: Verify change
+      run: grep "image:" k8s/deployment.yaml
+
+    - name: Commit and push updated manifest
+      run: |
+        git config user.email "ci-bot@bittush8789.github.io"
+        git config user.name "CI Bot [ArgoCD]"
+        git add k8s/deployment.yaml
+        git diff --cached --quiet || git commit -m "ci: update image → ${{ github.sha }}"
+        git push
+
+    # ArgoCD watches this repo and auto-deploys the new image within 3 minutes
+    - name: Summary
+      run: |
+        echo "✅ Manifest updated. ArgoCD will auto-sync to EKS."
+        echo "🔁 Image: ${{ needs.docker.outputs.image-uri }}"
+        echo "📦 Commit: ${{ github.sha }}"

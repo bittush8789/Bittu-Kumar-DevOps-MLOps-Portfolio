@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bittu-portfolio
+  namespace: argocd
+  labels:
+    app: bittu-portfolio
+    owner: bittush8789
+spec:
+  project: default
+
+  # Source: GitHub repo containing k8s manifests
+  source:
+    repoURL: https://github.com/bittush8789/Bittu-Kumar-DevOps-MLOps-Portfolio
+    targetRevision: main
+    path: k8s                    # Folder with deployment/service/hpa YAMLs
+
+  # Destination: EKS cluster (in-cluster)
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  # GitOps Sync Policy
+  syncPolicy:
+    automated:
+      prune: true                # Remove resources deleted from Git
+      selfHeal: true             # Auto-revert manual cluster changes
+    syncOptions:
+    - CreateNamespace=true       # Create namespace if not exists
+    - RespectIgnoreDifferences=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
