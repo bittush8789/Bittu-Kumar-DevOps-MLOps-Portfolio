@@ -3,20 +3,23 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React, { Suspense, lazy } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Services } from './components/Services';
-import { Projects } from './components/Projects';
-import { Certificates } from './components/Certificates';
 import { CustomCursor } from './components/CustomCursor';
-import { Experience } from './components/Experience';
-import { Blog } from './components/Blog';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
 import { Scene3D } from './components/Scene3D';
 import { motion, useScroll, useSpring } from 'motion/react';
+
+// Lazy load non-critical sections to speed up initial load
+const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })));
+const Certificates = lazy(() => import('./components/Certificates').then(m => ({ default: m.Certificates })));
+const Experience = lazy(() => import('./components/Experience').then(m => ({ default: m.Experience })));
+const Blog = lazy(() => import('./components/Blog').then(m => ({ default: m.Blog })));
+const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
 export default function App() {
   const { scrollYProgress } = useScroll();
@@ -61,13 +64,15 @@ export default function App() {
         <About />
         <Skills />
         <Services />
-        <Projects />
-        <Certificates />
-        <Experience />
-        <Blog />
-        <Contact />
+        <Suspense fallback={<div className="h-screen flex items-center justify-center font-black tracking-widest text-primary animate-pulse">LOADING...</div>}>
+          <Projects />
+          <Certificates />
+          <Experience />
+          <Blog />
+          <Contact />
+          <Footer />
+        </Suspense>
       </main>
-      <Footer />
     </div>
   );
 }
