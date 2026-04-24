@@ -152,7 +152,7 @@ export function Contact() {
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 md:px-8 py-5 md:py-6 outline-none focus:border-primary/40 transition-none font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05]"
+                      className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-4 md:px-8 py-5 md:py-6 outline-none focus:border-primary/40 transition-none font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05]"
                     />
                   </div>
                   
@@ -166,7 +166,7 @@ export function Contact() {
                       placeholder="john@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 md:px-8 py-5 md:py-6 outline-none focus:border-primary/40 transition-none font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05]"
+                      className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-4 md:px-8 py-5 md:py-6 outline-none focus:border-primary/40 transition-none font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05]"
                     />
                   </div>
                   
@@ -180,7 +180,7 @@ export function Contact() {
                       placeholder="How can I help you?"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white/[0.03] border border-white/5 rounded-[24px] md:rounded-[32px] px-6 md:px-8 py-6 md:py-8 outline-none focus:border-primary/40 transition-none font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05] resize-none"
+                      className="w-full bg-white/[0.03] border border-white/5 rounded-[24px] md:rounded-[32px] px-4 md:px-8 py-6 md:py-8 outline-none focus:border-primary/40 transition-none font-medium text-foreground placeholder:text-neutral-600 focus:bg-white/[0.05] resize-none"
                     />
                   </div>
                   
