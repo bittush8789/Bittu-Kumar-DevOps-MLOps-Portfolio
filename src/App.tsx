@@ -20,7 +20,7 @@ const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary transition-none duration-0 bg-grain overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary transition-none duration-0 overflow-x-hidden">
       {/* Large Background Text - Static version */}
       <div className="fixed inset-0 pointer-events-none select-none -z-40 flex flex-col justify-around opacity-[0.04] font-black leading-none uppercase overflow-hidden">
         <div className="text-[30vw] md:text-[25vw] tracking-tighter -ml-10">

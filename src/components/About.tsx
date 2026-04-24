@@ -25,7 +25,9 @@ export function About() {
                   src="/profile.jpg" 
                   alt="Bittu Kumar" 
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                  loading="lazy"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                 

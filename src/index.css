@@ -48,7 +48,6 @@
         @apply bg-background text-foreground text-[16px] sm:text-lg;
         font-family: var(--font-sans);
         -webkit-font-smoothing: antialiased;
-        background-attachment: fixed;
         background-image: 
             radial-gradient(ellipse at 50% -30%, color-mix(in srgb, var(--primary-color) 15%, transparent) 0%, transparent 60%),
             radial-gradient(ellipse at 100% 100%, color-mix(in srgb, var(--accent-color) 10%, transparent) 0%, transparent 50%),
@@ -57,12 +56,6 @@
         letter-spacing: -0.01em;
     }
     
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-    }
-
     h1, h2, h3, h4 {
         font-family: var(--font-heading);
         @apply tracking-[-0.03em] font-black;
@@ -110,20 +103,7 @@
         padding: var(--card-p);
     }
 
-    .bg-grain {
-        position: relative;
-    }
-    
-    .bg-grain::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 100;
-        pointer-events: none;
-        background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-        opacity: 0.15;
-        mix-blend-mode: overlay;
-    }
+
 
     .mesh-gradient {
         background: 
