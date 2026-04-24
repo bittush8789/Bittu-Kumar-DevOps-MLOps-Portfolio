@@ -19,7 +19,6 @@ export const NAV_LINKS = [
   { name: 'Certificates', href: '#certificates' },
   { name: 'Experience', href: '#experience' },
   { name: 'Blog', href: '#blog' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 export const CONTACT_INFO = {

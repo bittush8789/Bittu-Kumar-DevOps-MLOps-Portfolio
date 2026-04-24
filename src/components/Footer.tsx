@@ -15,35 +15,7 @@ export function Footer() {
       <div className="absolute -bottom-24 -right-24 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10" />
 
       <div className="container-liquid relative">
-        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
-          <div className="mb-10 md:mb-12">
-            <h2 className="text-[10px] md:text-sm font-bold tracking-[0.6em] text-primary uppercase mb-6 md:mb-8">Get in Touch</h2>
-            <a 
-              href={`mailto:${CONTACT_INFO.email}`} 
-              className="text-xl md:text-3xl lg:text-4xl font-black tracking-tighter hover:text-primary transition-all duration-500 underline decoration-primary/30 underline-offset-[8px] md:underline-offset-[12px] hover:underline-offset-[16px] md:hover:underline-offset-[20px] break-all px-4 block w-full"
-            >
-              {CONTACT_INFO.email}
-            </a>
-          </div>
 
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-            <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass-panel flex items-center justify-center border-black/5 hover:bg-primary hover:text-black transition-none group" title="GitHub">
-              <Github size={18} className="transition-none md:w-5 md:h-5" />
-            </a>
-            <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass-panel flex items-center justify-center border-black/5 hover:bg-primary hover:text-black transition-none group" title="LinkedIn">
-              <Linkedin size={18} className="transition-none md:w-5 md:h-5" />
-            </a>
-            <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass-panel flex items-center justify-center border-black/5 hover:bg-primary hover:text-black transition-none group" title="Instagram">
-              <Instagram size={18} className="transition-none md:w-5 md:h-5" />
-            </a>
-            <a href={CONTACT_INFO.hashnode} target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass-panel flex items-center justify-center border-black/5 hover:bg-primary hover:text-black transition-none group" title="Hashnode Blog">
-              <PenTool size={18} className="transition-none md:w-5 md:h-5" />
-            </a>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass-panel flex items-center justify-center border-black/5 hover:bg-primary hover:text-black transition-none group" title="Email Me">
-              <Mail size={18} className="transition-none md:w-5 md:h-5" />
-            </a>
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 py-12 md:py-16 border-t border-black/5 items-start">
           <div className="md:col-span-5">
