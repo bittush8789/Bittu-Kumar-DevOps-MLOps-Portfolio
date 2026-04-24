@@ -59,10 +59,10 @@ export function Hero() {
                 
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-stretch sm:items-center">
                   <div className="w-full sm:w-auto">
-                    <Button size="lg" className="h-16 w-full sm:w-auto px-10 bg-primary hover:bg-black text-black hover:text-white font-black tracking-widest uppercase rounded-[24px] group transition-none shadow-[0_20px_40px_rgba(255,179,25,0.2)]">
+                    <Button size="lg" className="h-16 w-full sm:w-auto px-10 bg-primary hover:bg-black text-black hover:text-white font-black tracking-widest uppercase rounded-[24px] group transition-all duration-300 shadow-[0_20px_40px_rgba(255,179,25,0.2)]">
                       <a href="#projects" className="flex items-center justify-center gap-3">
                         Explore Works
-                        <ChevronRight className="w-5 h-5 transition-none" />
+                        <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                       </a>
                     </Button>
                   </div>
@@ -72,7 +72,7 @@ export function Hero() {
                       size="lg"
                       variant="outline"
                       onClick={() => setIsResumeModalOpen(true)}
-                      className="h-16 w-full sm:w-auto px-10 glass-panel border-white/10 hover:border-primary/50 text-foreground font-black tracking-widest uppercase rounded-[24px] group transition-none"
+                      className="h-16 w-full sm:w-auto px-10 glass-panel border-white/10 hover:border-primary/50 text-foreground font-black tracking-widest uppercase rounded-[24px] group transition-all duration-300"
                     >
                       Download CV
                     </Button>
@@ -84,7 +84,7 @@ export function Hero() {
                     {[1, 2, 3, 4, 5].map((i) => (
                       <div 
                         key={i} 
-                        className="w-12 h-12 rounded-full border-[3px] border-black bg-neutral-800 overflow-hidden ring-4 ring-primary/5"
+                        className="w-12 h-12 rounded-full border-[3px] border-black bg-neutral-800 overflow-hidden ring-4 ring-primary/5 hover:scale-110 hover:z-10 transition-all duration-300 cursor-pointer"
                       >
                          <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i * 789}`} alt="User" />
                       </div>
@@ -103,35 +103,35 @@ export function Hero() {
             className="relative perspective-2000 block mt-12 lg:mt-0"
           >
             <div 
-              className="relative w-full aspect-[4/5] max-w-[550px] mx-auto"
+              className="relative w-full aspect-[4/5] max-w-[550px] mx-auto group/image"
             >
               {/* 3D Frame Effect */}
-              <div className="absolute inset-0 bg-primary/20 rounded-[64px] blur-[100px] -z-10" />
+              <div className="absolute inset-0 bg-primary/20 rounded-[64px] blur-[100px] -z-10 group-hover/image:bg-primary/30 transition-all duration-500" />
               
               <div className="glass-panel w-full h-full rounded-[64px] overflow-hidden border-white/10 group shadow-2xl relative">
                 <img 
                   src="/profile.jpg" 
                   alt="Bittu Kumar" 
-                  className="w-full h-full object-cover transition-none group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
                 
                 {/* Internal UI elements on image */}
-                <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-none">
+                <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="space-y-1">
                     <p className="text-[10px] font-black tracking-[0.3em] uppercase text-primary">System Status</p>
                     <p className="text-lg font-black text-white">ACTIVE NODES: 24</p>
                   </div>
-                  <Activity className="text-primary w-8 h-8" />
+                  <Activity className="text-primary w-8 h-8 animate-pulse" />
                 </div>
               </div>
 
               {/* Floating Status Cards - Static */}
               <div 
-                  className="absolute -top-6 -right-6 md:-top-10 md:-right-10 glass-panel p-4 md:p-8 rounded-[24px] md:rounded-[32px] border-white/20 backdrop-blur-3xl shadow-2xl z-20 group/card scale-75 md:scale-100"
+                  className="absolute -top-6 -right-6 md:-top-10 md:-right-10 glass-panel p-4 md:p-8 rounded-[24px] md:rounded-[32px] border-white/20 backdrop-blur-3xl shadow-2xl z-20 group/card scale-75 md:scale-100 hover:scale-105 transition-all duration-500"
               >
                 <div className="flex items-center gap-3 md:gap-5">
-                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-primary flex items-center justify-center text-black shadow-lg transition-none">
+                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-primary flex items-center justify-center text-black shadow-lg transition-transform duration-500 group-hover/card:rotate-[10deg]">
                       <Zap size={20} className="md:w-7 md:h-7" />
                     </div>
                     <div>
@@ -142,10 +142,10 @@ export function Hero() {
               </div>
 
               <div 
-                  className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 glass-panel p-4 md:p-8 rounded-[24px] md:rounded-[32px] border-white/20 backdrop-blur-3xl shadow-2xl z-20 group/card scale-75 md:scale-100"
+                  className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 glass-panel p-4 md:p-8 rounded-[24px] md:rounded-[32px] border-white/20 backdrop-blur-3xl shadow-2xl z-20 group/card scale-75 md:scale-100 hover:scale-105 transition-all duration-500"
               >
                 <div className="flex items-center gap-3 md:gap-5">
-                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-black flex items-center justify-center text-primary shadow-lg transition-none">
+                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-black flex items-center justify-center text-primary shadow-lg transition-transform duration-500 group-hover/card:rotate-[-10deg]">
                       <Terminal size={20} className="md:w-7 md:h-7" />
                     </div>
                     <div>

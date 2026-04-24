@@ -3,7 +3,7 @@ import { Award, Briefcase, GraduationCap, MapPin } from 'lucide-react';
 
 export function About() {
   return (
-    <section id="about" className="section-liquid relative transition-none overflow-hidden">
+    <section id="about" className="section-liquid relative transition-all duration-500 overflow-hidden">
       <div className="container-liquid relative z-10">
         <div className="grid lg:grid-cols-2 gap-liquid items-center">
           <div
@@ -24,7 +24,7 @@ export function About() {
                 <img 
                   src="/profile.jpg" 
                   alt="Bittu Kumar" 
-                  className="w-full h-full object-cover transition-none group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
@@ -79,9 +79,9 @@ export function About() {
                 ].map((item, i) => (
                   <div 
                     key={item.title}
-                    className="glass-panel p-8 rounded-[32px] border-white/5 group transition-none shadow-xl"
+                    className="glass-panel p-8 rounded-[32px] border-white/5 group transition-all duration-300 shadow-xl hover:border-primary/30"
                   >
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-none">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-all duration-300 group-hover:rotate-6">
                       <item.icon size={28} />
                     </div>
                     <h4 className="text-xs font-black text-neutral-500 uppercase tracking-widest mb-2">{item.title}</h4>

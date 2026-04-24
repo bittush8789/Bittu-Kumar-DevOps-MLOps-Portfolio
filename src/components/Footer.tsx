@@ -8,7 +8,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative pt-20 md:pt-24 pb-12 overflow-hidden transition-none section-liquid">
+    <footer className="relative pt-20 md:pt-24 pb-12 overflow-hidden transition-all duration-500 section-liquid">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-black/5 to-transparent" />
       <div className="absolute -bottom-24 -left-24 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
@@ -20,7 +20,7 @@ export function Footer() {
             <h2 className="text-[10px] md:text-sm font-bold tracking-[0.6em] text-primary uppercase mb-6 md:mb-8">Get in Touch</h2>
             <a 
               href={`mailto:${CONTACT_INFO.email}`} 
-              className="text-xl md:text-3xl lg:text-4xl font-black tracking-tighter hover:text-primary transition-none underline decoration-primary/30 underline-offset-[8px] md:underline-offset-[12px] hover:underline-offset-[16px] md:hover:underline-offset-[20px] break-all px-4 block w-full"
+              className="text-xl md:text-3xl lg:text-4xl font-black tracking-tighter hover:text-primary transition-all duration-500 underline decoration-primary/30 underline-offset-[8px] md:underline-offset-[12px] hover:underline-offset-[16px] md:hover:underline-offset-[20px] break-all px-4 block w-full"
             >
               {CONTACT_INFO.email}
             </a>

@@ -4,7 +4,7 @@ import { Award, ExternalLink } from 'lucide-react';
 
 export function Certificates() {
   return (
-    <section id="certificates" className="py-20 md:py-32 relative overflow-hidden transition-none">
+    <section id="certificates" className="py-20 md:py-32 relative overflow-hidden transition-all duration-500">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10" />
       
@@ -36,15 +36,15 @@ export function Certificates() {
           {CERTIFICATES.map((cert, idx) => (
             <div
               key={cert.title}
-              className="glass-panel p-10 rounded-[56px] border-white/5 hover:border-primary/40 hover:bg-white/[0.03] transition-none group relative overflow-hidden shadow-2xl"
+              className="glass-panel p-10 rounded-[56px] border-white/5 hover:border-primary/40 hover:bg-white/[0.03] transition-all duration-500 group relative overflow-hidden shadow-2xl"
             >
-              <div className="absolute top-0 right-0 p-10 opacity-[0.02] group-hover:opacity-[0.1] transition-none">
+              <div className="absolute top-0 right-0 p-10 opacity-[0.02] group-hover:opacity-[0.1] transition-all duration-500">
                 < Award size={120} />
               </div>
 
               <div className="flex items-center justify-between mb-12">
-                <div className="w-20 h-20 rounded-[24px] bg-white/5 flex items-center justify-center group-hover:bg-primary transition-none border border-white/5 shadow-xl">
-                  <Award size={36} className="text-primary group-hover:text-black transition-none" />
+                <div className="w-20 h-20 rounded-[24px] bg-white/5 flex items-center justify-center group-hover:bg-primary transition-all duration-500 border border-white/5 shadow-xl">
+                  <Award size={36} className="text-primary group-hover:text-black transition-colors duration-500" />
                 </div>
                 <span 
                   className="px-5 py-2.5 bg-black/40 backdrop-blur-md rounded-full text-[9px] font-black tracking-widest uppercase text-primary border border-primary/20 shadow-lg"
@@ -53,7 +53,7 @@ export function Certificates() {
                 </span>
               </div>
               
-              <h4 className="text-3xl font-black mb-10 leading-tight group-hover:text-primary transition-none pr-4">
+              <h4 className="text-3xl font-black mb-10 leading-tight group-hover:text-primary transition-colors duration-500 pr-4">
                 {cert.title}
               </h4>
 
@@ -67,7 +67,7 @@ export function Certificates() {
                     href={cert.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="p-4 bg-white/5 rounded-2xl hover:bg-primary hover:text-black transition-none shadow-2xl ring-1 ring-white/10" 
+                    className="p-4 bg-white/5 rounded-2xl hover:bg-primary hover:text-black transition-all duration-300 shadow-2xl ring-1 ring-white/10" 
                     aria-label="Verify Certificate"
                   >
                     <ExternalLink size={20} />

@@ -30,10 +30,10 @@ export function Navbar() {
         <div className={`glass-panel rounded-full px-4 md:px-6 py-2 md:py-3 flex items-center justify-between ${isScrolled ? 'bg-background/60 border-black/10 shadow-lg' : 'bg-transparent border-transparent'}`}>
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black font-black text-lg transition-none">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black font-black text-lg transition-all duration-300 group-hover:rotate-[10deg]">
               B
             </div>
-            <span className="font-bold text-lg tracking-tight group-hover:text-primary transition-none">BITTU<span className="text-primary">.</span></span>
+            <span className="font-bold text-lg tracking-tight group-hover:text-primary transition-all duration-300">BITTU<span className="text-primary">.</span></span>
           </a>
 
           {/* Desktop Nav */}
@@ -42,10 +42,10 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-bold tracking-widest uppercase text-neutral-400 hover:text-white transition-none relative group"
+                className="text-sm font-bold tracking-widest uppercase text-neutral-400 hover:text-white transition-all duration-300 relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-none group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -53,7 +53,7 @@ export function Navbar() {
           {/* Actions */}
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-3 pr-4 border-r border-black/10">
-              <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-none">
+              <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-all duration-300 hover:scale-110">
                 <Github size={18} />
               </a>
               <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-none" title="LinkedIn">
@@ -70,10 +70,10 @@ export function Navbar() {
             <div className="flex items-center gap-1 md:gap-2">
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 rounded-full glass-panel flex items-center justify-center border-white/10 hover:border-primary/50 transition-none group"
+                className="w-10 h-10 rounded-full glass-panel flex items-center justify-center border-white/10 hover:border-primary/50 transition-all duration-300 group"
                 aria-label="Toggle Theme"
               >
-                <div className={`w-4 h-4 rounded-full transition-none shadow-[0_0_10px_currentColor] ${
+                <div className={`w-4 h-4 rounded-full transition-all duration-300 shadow-[0_0_10px_currentColor] ${
                   theme === 'amber' ? 'bg-[#FFB319]' : 
                   theme === 'blue' ? 'bg-[#38bdf8]' : 
                   theme === 'purple' ? 'bg-[#c084fc]' : 
@@ -99,7 +99,7 @@ export function Navbar() {
               <div className="hidden sm:block">
                 <a 
                   href="#contact" 
-                  className="px-6 py-2 bg-black text-white font-bold rounded-full text-xs hover:bg-primary hover:text-black transition-none shadow-lg border border-white/10"
+                  className="px-6 py-2 bg-black text-white font-bold rounded-full text-xs hover:bg-primary hover:text-black transition-all duration-300 shadow-lg border border-white/10"
                 >
                   HIRE ME
                 </a>

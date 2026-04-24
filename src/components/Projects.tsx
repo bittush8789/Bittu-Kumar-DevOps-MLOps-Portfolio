@@ -20,7 +20,7 @@ export function Projects() {
   const handleFilter = useCallback((f: typeof filter) => setFilter(f), []);
 
   return (
-    <section id="projects" className="section-liquid relative overflow-hidden transition-none">
+    <section id="projects" className="section-liquid relative overflow-hidden transition-all duration-500">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] -z-10" />
       
@@ -46,7 +46,7 @@ export function Projects() {
               <button
                 key={f}
                 onClick={() => handleFilter(f as any)}
-                className={`flex-1 md:flex-none px-4 md:px-8 py-3 md:py-4 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase rounded-xl transition-none ${
+                className={`flex-1 md:flex-none px-4 md:px-8 py-3 md:py-4 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase rounded-xl transition-all duration-300 ${
                   filter === f 
                     ? 'bg-primary text-black shadow-[0_0_20px_rgba(255,179,25,0.3)]' 
                     : 'text-neutral-500 hover:text-foreground hover:bg-white/5'
@@ -64,10 +64,10 @@ export function Projects() {
               key={project.title}
               className="group h-full"
             >
-              <div className="glass-panel h-full rounded-[32px] md:rounded-[48px] overflow-hidden flex flex-col border-white/5 hover:border-primary/20 hover:bg-white/[0.03] transition-none glow-hover relative shadow-2xl">
+              <div className="glass-panel h-full rounded-[32px] md:rounded-[48px] overflow-hidden flex flex-col border-white/5 hover:border-primary/20 hover:bg-white/[0.03] transition-all duration-500 relative shadow-2xl">
               <div className="aspect-[16/10] relative overflow-hidden group/img-container">
                 {/* 3D Static Icon Layer */}
-                <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-none">
+                <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <Project3DIcon type={project.type as any} />
                 </div>
                 
@@ -76,10 +76,10 @@ export function Projects() {
                   alt={project.title} 
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover transition-none group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 
-                <div className="absolute inset-0 bg-primary/20 mix-blend-color opacity-0 group-hover:opacity-100 transition-none" />
+                <div className="absolute inset-0 bg-primary/20 mix-blend-color opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 pointer-events-none" />
                 
                 <div className="absolute top-4 left-4 md:top-8 md:left-8 flex gap-2 z-20">
@@ -91,14 +91,14 @@ export function Projects() {
               
               <div className="p-8 md:p-12 flex flex-col flex-grow relative z-10">
                 <div className="flex items-start justify-between gap-6 mb-8">
-                  <h4 className="text-2xl md:text-4xl font-black tracking-tighter leading-[1.1] group-hover:text-primary transition-none">
+                  <h4 className="text-2xl md:text-4xl font-black tracking-tighter leading-[1.1] group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h4>
                   <a 
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="p-3.5 md:p-4 bg-white/5 rounded-2xl hover:bg-primary hover:text-black transition-none shadow-2xl ring-1 ring-white/10" 
+                    className="p-3.5 md:p-4 bg-white/5 rounded-2xl hover:bg-primary hover:text-black transition-all duration-300 shadow-2xl ring-1 ring-white/10 group-hover:rotate-6" 
                     aria-label="GitHub Repository"
                   >
                     <Github size={20} />
@@ -119,10 +119,10 @@ export function Projects() {
                   </div>
                   
                   <button 
-                    className="flex items-center gap-4 text-[11px] md:text-[12px] font-black tracking-[0.3em] uppercase text-primary group/link border-t border-white/5 pt-8 w-full hover:text-foreground transition-none"
+                    className="flex items-center gap-4 text-[11px] md:text-[12px] font-black tracking-[0.3em] uppercase text-primary group/link border-t border-white/5 pt-8 w-full hover:text-foreground transition-all duration-300"
                   >
                     Explore Pipeline
-                    <ArrowRight className="w-5 h-5 transition-none" />
+                    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/link:translate-x-2" />
                   </button>
                 </div>
               </div>
