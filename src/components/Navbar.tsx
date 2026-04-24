@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Github, Linkedin, Mail, Instagram, PenTool } from 'lucide-react';
 import { NAV_LINKS, CONTACT_INFO } from '../constants';
-import { Magnetic } from './ui/magnetic';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,15 +25,15 @@ export function Navbar() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4' : 'py-8'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${isScrolled ? 'py-4' : 'py-8'}`}>
       <div className="container mx-auto px-6">
-        <div className={`glass-panel rounded-full px-4 md:px-6 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ${isScrolled ? 'bg-background/60 border-black/10 shadow-lg' : 'bg-transparent border-transparent'}`}>
+        <div className={`glass-panel rounded-full px-4 md:px-6 py-2 md:py-3 flex items-center justify-between ${isScrolled ? 'bg-background/60 border-black/10 shadow-lg' : 'bg-transparent border-transparent'}`}>
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black font-black text-lg transition-transform group-hover:rotate-12">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black font-black text-lg transition-none">
               B
             </div>
-            <span className="font-bold text-lg tracking-tight group-hover:text-primary transition-colors">BITTU<span className="text-primary">.</span></span>
+            <span className="font-bold text-lg tracking-tight group-hover:text-primary transition-none">BITTU<span className="text-primary">.</span></span>
           </a>
 
           {/* Desktop Nav */}
@@ -44,10 +42,10 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-bold tracking-widest uppercase text-neutral-400 hover:text-white transition-colors relative group"
+                className="text-sm font-bold tracking-widest uppercase text-neutral-400 hover:text-white transition-none relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-none group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -55,16 +53,16 @@ export function Navbar() {
           {/* Actions */}
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-3 pr-4 border-r border-black/10">
-              <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-colors">
+              <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-none">
                 <Github size={18} />
               </a>
-              <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-colors" title="LinkedIn">
+              <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-none" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-colors" title="Instagram">
+              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-none" title="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href={CONTACT_INFO.hashnode} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-colors" title="Hashnode Blog">
+              <a href={CONTACT_INFO.hashnode} target="_blank" rel="noopener noreferrer" className="p-2 text-neutral-400 hover:text-primary transition-none" title="Hashnode Blog">
                 <PenTool size={18} />
               </a>
             </div>
@@ -72,10 +70,10 @@ export function Navbar() {
             <div className="flex items-center gap-1 md:gap-2">
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 rounded-full glass-panel flex items-center justify-center border-white/10 hover:border-primary/50 transition-all duration-300 group"
+                className="w-10 h-10 rounded-full glass-panel flex items-center justify-center border-white/10 hover:border-primary/50 transition-none group"
                 aria-label="Toggle Theme"
               >
-                <div className={`w-4 h-4 rounded-full transition-colors duration-500 shadow-[0_0_10px_currentColor] ${
+                <div className={`w-4 h-4 rounded-full transition-none shadow-[0_0_10px_currentColor] ${
                   theme === 'amber' ? 'bg-[#FFB319]' : 
                   theme === 'blue' ? 'bg-[#38bdf8]' : 
                   theme === 'purple' ? 'bg-[#c084fc]' : 
@@ -99,14 +97,12 @@ export function Navbar() {
               </button>
 
               <div className="hidden sm:block">
-                <Magnetic>
-                  <a 
-                    href="#contact" 
-                    className="px-6 py-2 bg-black text-white font-bold rounded-full text-xs hover:bg-primary hover:text-black transition-all active:scale-95 shadow-lg border border-white/10"
-                  >
-                    HIRE ME
-                  </a>
-                </Magnetic>
+                <a 
+                  href="#contact" 
+                  className="px-6 py-2 bg-black text-white font-bold rounded-full text-xs hover:bg-primary hover:text-black transition-none shadow-lg border border-white/10"
+                >
+                  HIRE ME
+                </a>
               </div>
             </div>
 
@@ -120,35 +116,30 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden absolute top-full left-6 right-6 mt-4 glass-panel rounded-3xl p-8 z-50 border border-white/10"
-          >
-            <div className="flex flex-col gap-6">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-2xl font-black italic hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="pt-6 border-t border-black/10 flex gap-6">
-                <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 text-sm font-bold text-neutral-400">
-                   <Mail size={16} /> {CONTACT_INFO.email}
-                </a>
-              </div>
+      {/* Mobile Menu - Static */}
+      {isMobileMenuOpen && (
+        <div
+          className="lg:hidden absolute top-full left-6 right-6 mt-4 glass-panel rounded-3xl p-8 z-50 border border-white/10"
+        >
+          <div className="flex flex-col gap-6">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-2xl font-black italic hover:text-primary transition-none"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+            <div className="pt-6 border-t border-black/10 flex gap-6">
+              <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 text-sm font-bold text-neutral-400">
+                 <Mail size={16} /> {CONTACT_INFO.email}
+              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

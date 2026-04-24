@@ -10,71 +10,52 @@ interface Project3DIconProps {
 
 function DevOpsIcon({ color }: { color: string }) {
   const mesh = useRef<THREE.Mesh>(null!);
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    mesh.current.rotation.x = t * 0.5;
-    mesh.current.rotation.y = t * 0.2;
-  });
 
   return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={1}>
-      <Torus ref={mesh} args={[1, 0.3, 16, 100]}>
-        <MeshDistortMaterial
-          color={color}
-          speed={2}
-          distort={0.3}
-          radius={1}
-          metalness={0.8}
-          roughness={0.2}
-        />
-      </Torus>
-    </Float>
+    <Torus ref={mesh} args={[1, 0.3, 16, 100]}>
+      <MeshDistortMaterial
+        color={color}
+        speed={0}
+        distort={0.3}
+        radius={1}
+        metalness={0.8}
+        roughness={0.2}
+      />
+    </Torus>
   );
 }
 
 function MLOpsIcon({ color }: { color: string }) {
   const mesh = useRef<THREE.Mesh>(null!);
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    mesh.current.rotation.z = t * 0.3;
-  });
 
   return (
-    <Float speed={3} rotationIntensity={2} floatIntensity={2}>
-      <Sphere ref={mesh} args={[1, 64, 64]}>
-        <MeshDistortMaterial
-          color={color}
-          speed={4}
-          distort={0.5}
-          radius={1}
-          metalness={0.6}
-          roughness={0.1}
-        />
-      </Sphere>
-    </Float>
+    <Sphere ref={mesh} args={[1, 64, 64]}>
+      <MeshDistortMaterial
+        color={color}
+        speed={0}
+        distort={0.5}
+        radius={1}
+        metalness={0.6}
+        roughness={0.1}
+      />
+    </Sphere>
   );
 }
 
 function LLMOpsIcon({ color }: { color: string }) {
   const mesh = useRef<THREE.Mesh>(null!);
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    mesh.current.rotation.y = t * 0.4;
-  });
 
   return (
-    <Float speed={1.5} rotationIntensity={1.5} floatIntensity={1.5}>
-      <Icosahedron ref={mesh} args={[1, 0]}>
-        <MeshDistortMaterial
-          color={color}
-          speed={1.5}
-          distort={0.4}
-          radius={1}
-          metalness={0.9}
-          roughness={0.1}
-        />
-      </Icosahedron>
-    </Float>
+    <Icosahedron ref={mesh} args={[1, 0]}>
+      <MeshDistortMaterial
+        color={color}
+        speed={0}
+        distort={0.4}
+        radius={1}
+        metalness={0.9}
+        roughness={0.1}
+      />
+    </Icosahedron>
   );
 }
 

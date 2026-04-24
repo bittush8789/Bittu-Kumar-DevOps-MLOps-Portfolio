@@ -33,25 +33,25 @@ export const CONTACT_INFO = {
 
 export const REMOTE_SERVICES = [
   {
-    title: 'LLMOps & RAG Pipelines',
+    title: 'LLMOps Engineer',
     description: 'Architecting production-grade LLM systems with Retrieval Augmented Generation (RAG), vector databases, and real-time observability.',
     icon: 'Cpu',
     tags: ['LangChain', 'Pinecone', 'LlamaIndex'],
   },
   {
-    title: 'MLOps Engineering',
+    title: 'MLOps Engineer',
     description: 'Engineering end-to-end ML lifecycles—from automated training pipelines and versioning to scalable model serving and monitoring.',
     icon: 'Workflow',
     tags: ['Kubeflow', 'MLflow', 'DVC'],
   },
   {
-    title: 'Enterprise AI Solutions',
+    title: 'AI Engineer',
     description: 'Developing intelligent agentic systems and custom AI solutions that solve complex business challenges at scale.',
     icon: 'Box',
     tags: ['Agentic AI', 'PyTorch', 'Transformers'],
   },
   {
-    title: 'Cloud-Native DevOps',
+    title: 'DevOps Engineer',
     description: 'Building resilient, automated infrastructure using IaC and Kubernetes to support high-scale distributed applications.',
     icon: 'Cloud',
     tags: ['Kubernetes', 'Terraform', 'Helm'],

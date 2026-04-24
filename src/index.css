@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Unbounded:wght@400;700;900&display=swap');
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @theme inline {
     --font-heading: 'Unbounded', sans-serif;
@@ -19,10 +18,10 @@
     --radius-2xl: 32px;
 
     /* Liquid Spacing Variables */
-    --section-py: clamp(5rem, 10vw, 8rem);
-    --container-px: clamp(1.5rem, 5vw, 4rem);
-    --grid-gap: clamp(1.5rem, 3vw, 2.5rem);
-    --card-p: clamp(1.5rem, 4vw, 3rem);
+    --section-py: clamp(2.5rem, 6vw, 8rem);
+    --container-px: clamp(0.75rem, 4vw, 4rem);
+    --grid-gap: clamp(0.75rem, 3vw, 2.5rem);
+    --card-p: clamp(1rem, 4vw, 3rem);
 }
 
 :root {
@@ -245,6 +244,13 @@
         line-height: 1.6;
         letter-spacing: -0.01em;
     }
+    
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
     h1, h2, h3, h4 {
         font-family: var(--font-heading);
         @apply tracking-[-0.03em] font-black;
@@ -262,7 +268,7 @@
     }
 
     .glow-hover {
-        @apply transition-all duration-500 hover:shadow-[0_0_20px_rgba(255,179,25,0.1)] hover:border-primary/30;
+        @apply transition-none hover:shadow-[0_0_20px_rgba(255,179,25,0.1)] hover:border-primary/30;
     }
 
     .text-balance {
@@ -316,22 +322,4 @@
     }
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes liquid {
-    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-}
-
-.liquid-shape {
-    animation: liquid 8s ease-in-out infinite;
-}
+/* Animations removed */

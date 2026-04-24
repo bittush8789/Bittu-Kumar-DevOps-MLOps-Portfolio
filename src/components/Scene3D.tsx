@@ -15,11 +15,8 @@ function FloatingParticles({ count = 1000 }) {
   }, [count]);
 
   const pointsRef = useRef<THREE.Points>(null!);
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    pointsRef.current.rotation.y = t * 0.05;
-    pointsRef.current.rotation.x = t * 0.02;
-  });
+  // Movement removed
+
 
   return (
     <Points ref={pointsRef} positions={points} stride={3} frustumCulled={false}>
@@ -38,38 +35,31 @@ function FloatingParticles({ count = 1000 }) {
 function FloatingShape({ position, color, size, speed, distort, type = 'sphere' }: { position: [number, number, number], color: string, size: number, speed: number, distort: number, type?: 'sphere' | 'torus' | 'icosahedron' }) {
   const mesh = useRef<THREE.Mesh>(null!);
   
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    mesh.current.position.y += Math.sin(t * speed) * 0.002;
-  });
+  // Movement removed
+
 
   const Geometry = type === 'torus' ? Torus : type === 'icosahedron' ? Icosahedron : Sphere;
   const args = type === 'torus' ? [size, 0.4, 32, 100] : type === 'icosahedron' ? [size, 0] : [size, 64, 64];
 
   return (
-    <Float speed={speed} rotationIntensity={2} floatIntensity={2}>
-      <Geometry ref={mesh} position={position} args={args as any}>
-        <MeshDistortMaterial
-          color={color}
-          speed={speed}
-          distort={distort}
-          radius={1}
-          metalness={0.5}
-          roughness={0.2}
-          transparent
-          opacity={0.25}
-        />
-      </Geometry>
-    </Float>
+    <Geometry ref={mesh} position={position} args={args as any}>
+      <MeshDistortMaterial
+        color={color}
+        speed={0}
+        distort={distort}
+        radius={1}
+        metalness={0.5}
+        roughness={0.2}
+        transparent
+        opacity={0.25}
+      />
+    </Geometry>
   );
 }
 
 function Rig() {
-  useFrame((state) => {
-    state.camera.position.x = THREE.MathUtils.lerp(state.camera.position.x, state.mouse.x * 2, 0.05);
-    state.camera.position.y = THREE.MathUtils.lerp(state.camera.position.y, state.mouse.y * 2, 0.05);
-    state.camera.lookAt(0, 0, 0);
-  });
+  // Movement removed
+
   return null;
 }
 
