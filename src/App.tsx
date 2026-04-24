@@ -42,6 +42,7 @@ export default function App() {
           <Certificates />
           <Experience />
           <Blog />
+          <Contact />
           <Footer />
         </Suspense>
       </main>

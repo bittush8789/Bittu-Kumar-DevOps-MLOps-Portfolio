@@ -96,10 +96,15 @@ export function Navbar() {
                 }`} />
               </button>
 
+              <div className="hidden sm:block">
+                <a 
+                  href="#contact" 
+                  className="px-6 py-2 bg-black text-white font-bold rounded-full text-xs hover:bg-primary hover:text-black transition-all duration-300 shadow-lg border border-white/10"
+                >
+                  HIRE ME
+                </a>
               </div>
-
-
-            <button
+            </div>            <button
               className="lg:hidden p-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
