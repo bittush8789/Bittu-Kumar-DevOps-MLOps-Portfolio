@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, Linkedin, Github, User, MessageSquare, Instagram, PenTool, CheckCircle2 } from 'lucide-react';
+import { Send, Mail, MapPin, Linkedin, Github, User, MessageSquare, Instagram, PenTool, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import { CONTACT_INFO } from '../constants';
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -16,10 +17,19 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey || accessKey === "your_web3forms_key_here") {
+      setError("Web3Forms Access Key is missing. Please check your .env file.");
+      setIsSubmitting(false);
+      return;
+    }
 
     const submissionData = {
       ...formData,
-      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+      access_key: accessKey,
       subject: `New Portfolio Message from ${formData.name}`,
       from_name: "Bittu Portfolio"
     };
@@ -34,19 +44,23 @@ export function Contact() {
         body: JSON.stringify(submissionData),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setIsSuccess(true);
         setShowToast(true);
         setFormData({ name: '', email: '', message: '' });
         
-        // Hide toast and reset success button state after 5 seconds
         setTimeout(() => {
           setShowToast(false);
           setIsSuccess(false);
         }, 5000);
+      } else {
+        setError(result.message || "Failed to send message. Please try again.");
       }
-    } catch (error) {
-      console.error("Submission Error", error);
+    } catch (err) {
+      console.error("Submission Error", err);
+      setError("An unexpected error occurred. Please check your connection.");
     } finally {
       setIsSubmitting(false);
     }
@@ -54,7 +68,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="section-liquid relative transition-none overflow-hidden">
-      {/* Toast Notification */}
+      {/* Success Toast */}
       {showToast && (
         <div className="fixed top-32 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-sm">
           <div className="glass-panel p-6 rounded-[32px] border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(16,185,129,0.2)] flex items-center gap-5">
@@ -65,6 +79,24 @@ export function Contact() {
               <p className="text-white font-black tracking-tight text-lg">Message Sent!</p>
               <p className="text-neutral-400 text-xs font-medium">I'll get back to you soon.</p>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Toast */}
+      {error && (
+        <div className="fixed top-32 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-sm">
+          <div className="glass-panel p-6 rounded-[32px] border border-rose-500/30 bg-rose-500/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(244,63,94,0.2)] flex items-center gap-5">
+            <div className="w-12 h-12 rounded-2xl bg-rose-500 flex items-center justify-center shadow-lg shadow-rose-500/20">
+              <AlertCircle className="text-white" size={24} />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-black tracking-tight text-sm uppercase">Submission Error</p>
+              <p className="text-neutral-400 text-[10px] font-medium leading-tight mt-1">{error}</p>
+            </div>
+            <button onClick={() => setError(null)} className="text-neutral-500 hover:text-white">
+              < PenTool size={14} className="rotate-45" />
+            </button>
           </div>
         </div>
       )}
