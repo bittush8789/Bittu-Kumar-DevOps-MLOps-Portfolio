@@ -14,15 +14,7 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const [theme, setTheme] = useState<'amber' | 'blue' | 'purple' | 'emerald' | 'rose' | 'cyan' | 'orange' | 'silver' | 'indigo' | 'teal' | 'yellow' | 'crimson' | 'lime' | 'fuchsia' | 'gold' | 'ruby' | 'coral' | 'mint' | 'lavender' | 'topaz'>('amber');
 
-  const toggleTheme = () => {
-    const themes: ('amber' | 'blue' | 'purple' | 'emerald' | 'rose' | 'cyan' | 'orange' | 'silver' | 'indigo' | 'teal' | 'yellow' | 'crimson' | 'lime' | 'fuchsia' | 'gold' | 'ruby' | 'coral' | 'mint' | 'lavender' | 'topaz')[] = 
-      ['amber', 'blue', 'purple', 'emerald', 'rose', 'cyan', 'orange', 'silver', 'indigo', 'teal', 'yellow', 'crimson', 'lime', 'fuchsia', 'gold', 'ruby', 'coral', 'mint', 'lavender', 'topaz'];
-    const nextTheme = themes[(themes.indexOf(theme) + 1) % themes.length];
-    setTheme(nextTheme);
-    document.documentElement.setAttribute('data-theme', nextTheme === 'amber' ? '' : nextTheme);
-  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${isScrolled ? 'py-4' : 'py-8'}`}>
@@ -67,39 +59,11 @@ export function Navbar() {
               </a>
             </div>
             
-            <div className="flex items-center gap-1 md:gap-2">
-              <button
-                onClick={toggleTheme}
-                className="w-10 h-10 rounded-full glass-panel flex items-center justify-center border-white/10 hover:border-primary/50 transition-all duration-300 group"
-                aria-label="Toggle Theme"
-              >
-                <div className={`w-4 h-4 rounded-full transition-all duration-300 shadow-[0_0_10px_currentColor] ${
-                  theme === 'amber' ? 'bg-[#FFB319]' : 
-                  theme === 'blue' ? 'bg-[#38bdf8]' : 
-                  theme === 'purple' ? 'bg-[#c084fc]' : 
-                  theme === 'emerald' ? 'bg-[#34d399]' :
-                  theme === 'rose' ? 'bg-[#fb7185]' :
-                  theme === 'cyan' ? 'bg-[#22d3ee]' :
-                  theme === 'orange' ? 'bg-[#fb923c]' :
-                  theme === 'silver' ? 'bg-[#94a3b8]' : 
-                  theme === 'indigo' ? 'bg-[#818cf8]' :
-                  theme === 'teal' ? 'bg-[#2dd4bf]' :
-                  theme === 'yellow' ? 'bg-[#facc15]' :
-                  theme === 'crimson' ? 'bg-[#dc2626]' :
-                  theme === 'lime' ? 'bg-[#a3e635]' : 
-                  theme === 'fuchsia' ? 'bg-[#d946ef]' :
-                  theme === 'gold' ? 'bg-[#fbbf24]' :
-                  theme === 'ruby' ? 'bg-[#e11d48]' :
-                  theme === 'coral' ? 'bg-[#ff7f50]' :
-                  theme === 'mint' ? 'bg-[#10b981]' :
-                  theme === 'lavender' ? 'bg-[#a78bfa]' : 'bg-[#ffc87c]'
-                }`} />
-              </button>
-
+            <div className="flex items-center gap-4">
               <div className="hidden sm:block">
                 <a 
                   href="#contact" 
-                  className="px-6 py-2 bg-black text-white font-bold rounded-full text-xs hover:bg-primary hover:text-black transition-all duration-300 shadow-lg border border-white/10"
+                  className="px-6 py-2 bg-primary text-black font-black rounded-full text-xs hover:bg-white transition-all duration-300 shadow-lg border border-white/10"
                 >
                   HIRE ME
                 </a>

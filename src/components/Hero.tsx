@@ -28,7 +28,7 @@ export function Hero() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:items-center">
           {/* Text Content */}
-          <div className="order-last lg:order-first">
+          <div className="order-first">
             <div>
               <div 
                 className="inline-flex items-center gap-3 py-2 px-6 rounded-full glass-panel text-[11px] font-black tracking-[0.4em] uppercase mb-10 border-white/5 shadow-xl"
@@ -98,9 +98,9 @@ export function Hero() {
               </div>
             </div>
           </div>
-          {/* Image Side - Stacked on Mobile */}
+          {/* Image Side - Below text on Mobile */}
           <div
-            className="relative perspective-2000 block mt-12 lg:mt-0"
+            className="relative perspective-2000 block mt-20 lg:mt-0"
           >
             <div 
               className="relative w-full aspect-[4/5] max-w-[550px] mx-auto group/image"
