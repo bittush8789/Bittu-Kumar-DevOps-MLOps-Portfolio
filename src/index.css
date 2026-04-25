@@ -34,6 +34,16 @@
     --text-muted: #94a3b8;
 }
 
+:root.light {
+    --bg-color: #f8fafc; /* Light Slate */
+    --fg-color: #0f172a; /* Dark Slate */
+    --primary-color: #f59e0b; /* Warmer Amber */
+    --accent-color: #4f46e5; /* Deeper Indigo */
+    --border: rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --text-muted: #475569;
+}
+
 
 
 @layer base {

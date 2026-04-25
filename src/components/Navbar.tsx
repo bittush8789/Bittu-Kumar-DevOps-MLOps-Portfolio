@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Instagram, PenTool } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Instagram, PenTool, Sun, Moon } from 'lucide-react';
 import { NAV_LINKS, CONTACT_INFO } from '../constants';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'dark';
+    }
+    return 'dark';
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +20,20 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
 
 
@@ -68,6 +89,22 @@ export function Navbar() {
                   HIRE ME
                 </a>
               </div>
+              
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className={`p-2.5 rounded-full transition-all duration-500 shadow-lg border border-white/10 group flex items-center justify-center overflow-hidden relative ${
+                  theme === 'dark' 
+                  ? 'bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white' 
+                  : 'bg-gradient-to-br from-orange-400 via-amber-400 to-yellow-300 text-black'
+                }`}
+                title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              >
+                <div className="relative z-10 transition-transform duration-500 group-hover:rotate-12">
+                  {theme === 'dark' ? <Moon size={18} fill="currentColor" /> : <Sun size={18} fill="currentColor" />}
+                </div>
+                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </button>
             </div>            <button
               className="lg:hidden p-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
