@@ -175,7 +175,7 @@ export const PROJECTS = [
   {
     title: 'Enterprise 3-Tier E-Commerce Platform',
     type: 'DevOps',
-    problem: 'Architecting and deploying a production-grade 3-tier e-commerce architecture on Kubernetes. This platform integrates FastAPI backends, Next.js frontends, and robust data layers with Redis and PostgreSQL, all orchestrated via Terraform and Helm on AWS EKS to handle enterprise-scale traffic and security requirements.',
+    problem: 'Production-grade 3-tier e-commerce on Kubernetes using FastAPI, Next.js, and Redis/Postgres, orchestrated with Terraform and Helm on AWS EKS.',
     stack: ['FastAPI', 'Next.js', 'PostgreSQL', 'Redis', 'Kubernetes', 'Terraform', 'AWS EKS', 'Helm'],
     features: [
       'High-availability 3-tier architecture',
@@ -190,7 +190,7 @@ export const PROJECTS = [
   {
     title: 'CloudOps Control Center',
     type: 'DevOps',
-    problem: 'Building a centralized dashboard for multi-cloud infrastructure management and observability. This control center provides a unified interface for monitoring Kubernetes clusters, managing CI/CD pipelines, and automating resource provisioning across AWS and Azure, reducing operational complexity for cloud-native teams.',
+    problem: 'Unified multi-cloud dashboard for monitoring Kubernetes clusters and automating CI/CD workflows across AWS and Azure environments.',
     stack: ['React', 'Node.js', 'Kubernetes API', 'Prometheus', 'Grafana', 'Terraform', 'GitHub Actions'],
     features: [
       'Unified Multi-Cloud Dashboard',
@@ -205,7 +205,7 @@ export const PROJECTS = [
   {
     title: 'AWS Multi-Environment Terraform Platform',
     type: 'DevOps',
-    problem: 'Architecting a modular, enterprise-ready AWS infrastructure platform using Terraform. The solution implements multi-environment (Dev/Staging/Prod) isolation, automated state management, and strict security compliance, ensuring consistency and reliability across complex cloud deployments.',
+    problem: 'Modular, enterprise-ready AWS infrastructure using Terraform with multi-environment isolation and automated state management.',
     stack: ['Terraform', 'AWS (VPC/EKS/RDS)', 'Terragrunt', 'GitHub Actions', 'Checkov', 'Infracost'],
     features: [
       'Modular Multi-Environment IaC',
@@ -220,7 +220,7 @@ export const PROJECTS = [
   {
     title: 'Production Kubernetes Monitoring Stack',
     type: 'DevOps',
-    problem: 'Implementing a comprehensive observability suite for large-scale Kubernetes clusters. This project features a full Prometheus and Grafana stack, integrated with Loki for logging and Tempo for distributed tracing, providing deep insights into application performance and infrastructure health.',
+    problem: 'Comprehensive observability stack for Kubernetes featuring Prometheus, Grafana, Loki, and Tempo for deep performance insights.',
     stack: ['Prometheus', 'Grafana', 'Loki', 'Tempo', 'Helm', 'Kubernetes', 'Alertmanager'],
     features: [
       'Full Observability Stack (METLT)',
@@ -235,7 +235,7 @@ export const PROJECTS = [
   {
     title: 'Enterprise DevSecOps Security Pipeline',
     type: 'DevSecOps',
-    problem: 'Transforming standard CI/CD workflows into hardened DevSecOps pipelines. By integrating automated vulnerability scanning (Trivy), static analysis (SonarQube), and secret detection (TruffleHog), this pipeline ensures that security is shifted left and maintained throughout the entire software development lifecycle.',
+    problem: 'Hardened CI/CD pipelines integrating Trivy, SonarQube, and TruffleHog to automate security scanning and ensure compliance.',
     stack: ['GitHub Actions', 'Jenkins', 'Trivy', 'SonarQube', 'Snyk', 'TruffleHog', 'Docker'],
     features: [
       'Automated Vulnerability Scanning',
@@ -250,7 +250,7 @@ export const PROJECTS = [
   {
     title: 'Advanced K8s Deployment Strategies',
     type: 'DevOps',
-    problem: 'Developing a production-ready platform to execute and monitor advanced Kubernetes deployment strategies. This project demonstrates hands-on implementation of Blue-Green, Canary, and Progressive Delivery patterns using Argo Rollouts and Istio, enabling zero-downtime releases and automated rollbacks based on health metrics.',
+    problem: 'Production platform for Blue-Green and Canary deployments on Kubernetes using Argo Rollouts and Istio for zero-downtime releases.',
     stack: ['Kubernetes', 'Argo Rollouts', 'Istio', 'Prometheus', 'Helm', 'Kind'],
     features: [
       'Blue-Green & Canary Deployments',
