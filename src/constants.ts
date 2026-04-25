@@ -271,7 +271,7 @@ export const PROJECTS = [
       'Secret and License Compliance',
       'Hardened Container Image Builds',
     ],
-    github: 'https://github.com/bittush8789/DevSecOps-CI-CD-Security-Pipeline',
+    github: 'https://github.com/bittush8789/DevSecOps-CI-CD-Security-Pipeline/tree/cicd',
     image: '/devsecops-pipeline.png',
     isFeatured: true,
   },
