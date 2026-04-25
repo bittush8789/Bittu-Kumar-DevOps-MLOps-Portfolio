@@ -265,7 +265,7 @@ export const PROJECTS = [
   {
     title: 'US Visa Approval Prediction',
     type: 'MLOps',
-    problem: 'Architecting a production-scale MLOps environment to automate the lifecycle of US Visa prediction models. This implementation features robust data versioning with DVC, automated CI/CD via GitHub Actions, and scalable model serving using Kserve on Kubernetes, ensuring high availability and reproducible experiments across distributed teams.',
+    problem: 'Automated MLOps pipeline for US Visa predictions with DVC, GitHub Actions, and Kserve on Kubernetes.',
     stack: ['Python', 'Docker', 'AWS (S3/ECR)', 'MLflow', 'DVC', 'GitHub Actions', 'ArgoCD', 'Prometheus', 'Grafana'],
     features: [
       'Automated End-to-End MLOps Pipeline',
@@ -280,7 +280,7 @@ export const PROJECTS = [
   {
     title: 'Churn Model Prediction',
     type: 'MLOps',
-    problem: 'Developing an end-to-end predictive system for customer churn that integrates advanced machine learning with production-grade monitoring. The project focuses on building a self-healing infrastructure that tracks model drift in real-time using Prometheus and Grafana, enabling proactive updates to maintain prediction accuracy in dynamic market conditions.',
+    problem: 'Predictive churn analysis system with real-time drift monitoring using Prometheus and Grafana on Kubernetes.',
     stack: ['Python', 'Scikit-Learn', 'Docker', 'Kubernetes', 'FastAPI', 'Prometheus', 'Grafana'],
     features: [
       'End-to-end MLOps pipeline for model inference',
@@ -293,7 +293,7 @@ export const PROJECTS = [
   {
     title: 'MLOps Zero to Hero',
     type: 'MLOps',
-    problem: 'A structured, industry-aligned roadmap designed to guide engineers through the complexities of modern MLOps. This comprehensive resource covers everything from containerization and orchestration to advanced LLMOps patterns, providing hands-on implementation guides for building resilient, cloud-native AI infrastructure from the ground up.',
+    problem: 'Comprehensive roadmap and hands-on guides for mastering modern MLOps and LLMOps infrastructure.',
     stack: ['MLOps Roadmap', 'Best Practices', 'System Design', 'Cloud Architecture'],
     features: [
       'Step-by-step learning path for MLOps engineers',
@@ -307,7 +307,7 @@ export const PROJECTS = [
   {
     title: 'Medical Chatbot with LLMs & LangChain',
     type: 'LLMOps',
-    problem: 'Implementing a secure, HIPAA-conscious medical chatbot using Retrieval Augmented Generation (RAG) and open-source LLMs. The system leverages Pinecone for high-performance vector search and LangChain for complex chain management, all deployed within an AWS-based containerized environment to ensure scalability and low-latency responses.',
+    problem: 'Secure RAG-based medical chatbot using LangChain, Pinecone, and open-source LLMs on AWS.',
     stack: ['LLMs', 'LangChain', 'Pinecone', 'Flask', 'AWS', 'Docker'],
     features: [
       'RAG implementation for medical knowledge retrieval',
@@ -320,7 +320,7 @@ export const PROJECTS = [
   {
     title: 'End-to-End ML Pipeline',
     type: 'MLOps',
-    problem: 'Designing a fully automated CI/CD pipeline specialized for machine learning workloads. This project demonstrates the seamless integration of MLflow for experiment tracking and DVC for data provenance, enabling a "push-to-deploy" workflow that handles training, validation, and containerized deployment with zero-downtime on Kubernetes clusters.',
+    problem: 'CI/CD for machine learning with MLflow and DVC integration for automated deployment on Kubernetes.',
     stack: ['Python', 'MLflow', 'DVC', 'Docker', 'Kubernetes', 'GitHub Actions'],
     features: [
       'CI/CD for machine learning models',
@@ -333,7 +333,7 @@ export const PROJECTS = [
   {
     title: 'US Plumbing Solutions',
     type: 'DevOps',
-    problem: 'Developing a robust, scalable full-stack booking and management system for a US-based services company, featuring automated deployments and secure client management.',
+    problem: 'Scalable full-stack booking system with automated cloud deployments and secure client management.',
     stack: ['React', 'Node.js', 'Postgres', 'Docker', 'AWS', 'GitHub Actions'],
     features: [
       'Interactive booking and scheduling system',
@@ -346,7 +346,7 @@ export const PROJECTS = [
   {
     title: 'Food Delivery Infrastructure',
     type: 'DevOps',
-    problem: 'Architecting a highly available, containerized delivery ecosystem with multi-stage CI/CD pipelines and automated scaling to handle high-traffic workloads.',
+    problem: 'High-availability containerized delivery ecosystem with multi-stage CI/CD and auto-scaling on Kubernetes.',
     stack: ['React', 'Node.js', 'Redis', 'Docker', 'Kubernetes', 'GitHub Actions', 'AWS'],
     features: [
       'High-concurrency ordering system with Redis',
@@ -359,7 +359,7 @@ export const PROJECTS = [
   {
     title: 'AI Blog Engine',
     type: 'LLMOps',
-    problem: 'Deploying and managing an AI-driven content platform with automated model inference pipelines, cloud storage integration, and scalable web infrastructure.',
+    problem: 'AI-driven content platform with automated model inference and serverless scaling on AWS.',
     stack: ['Python', 'Django', 'Docker', 'AWS (Lambda/S3)', 'Terraform', 'GitHub Actions'],
     features: [
       'Automated AI-content generation pipelines',
@@ -372,7 +372,7 @@ export const PROJECTS = [
   {
     title: 'HealthConnect (Production SKU)',
     type: 'DevOps',
-    problem: 'Engineering a high-availability healthcare appointment platform with production-ready patterns, automated SSL/TLS termination, and resilient microservices architecture.',
+    problem: 'High-availability healthcare platform with microservices architecture and automated SSL/TLS security.',
     stack: ['React', 'Node.js', 'MongoDB', 'Nginx', 'Docker Swarm', 'GitHub Actions'],
     features: [
       'Production-grade microservices with Nginx Proxy',
@@ -385,7 +385,7 @@ export const PROJECTS = [
   {
     title: 'AI DevOps Copilot',
     type: 'LLMOps',
-    problem: 'Bridging the gap between generative AI and infrastructure management by building an intelligent assistant for DevOps troubleshooting. The copilot uses RAG to analyze logs and cloud configurations, providing automated root-cause analysis and Infrastructure-as-Code suggestions to reduce Mean Time to Recovery (MTTR) in complex microservices environments.',
+    problem: 'AI assistant for infrastructure management and log analysis using RAG and LLMs for faster troubleshooting.',
     stack: ['Python', 'OpenAI/Gemini', 'LangChain', 'Terraform', 'Kubernetes'],
     features: [
       'AI-driven infrastructure provisioning and optimization',
@@ -398,7 +398,7 @@ export const PROJECTS = [
   {
     title: 'AI-Powered DevOps Projects',
     type: 'DevOps',
-    problem: 'Exploring the intersection of artificial intelligence and site reliability engineering through a series of automated pilot projects. Key implementations include predictive scaling algorithms for AWS EC2/EKS and self-healing CI/CD pipelines that use LLMs to automatically patch common dependency vulnerabilities and configuration drifts.',
+    problem: 'Series of automated pilot projects exploring predictive scaling and self-healing CI/CD pipelines.',
     stack: ['Python', 'GitHub Actions', 'Docker', 'AI/ML Models', 'AWS'],
     features: [
       'Self-healing CI/CD pipelines',
@@ -411,7 +411,7 @@ export const PROJECTS = [
   {
     title: 'Modern Resume & Portfolio Builder',
     type: 'DevOps',
-    problem: 'Developing a high-performance, developer-centric portfolio engine that automates the generation of resumes and project showcases. Built with a focus on core web vitals and premium aesthetics, the application uses React and Framer Motion to deliver a "Liquid Glass" experience, serving as a template for technical professionals to showcase complex skillsets.',
+    problem: 'Developer portfolio engine with dynamic resume generation and liquid glass aesthetics.',
     stack: ['React', 'Tailwind CSS', 'Framer Motion', 'TypeScript', 'Vite'],
     features: [
       'Dynamic resume generation for different roles',
