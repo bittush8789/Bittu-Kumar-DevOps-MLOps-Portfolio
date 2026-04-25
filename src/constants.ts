@@ -173,6 +173,34 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
+    title: 'Credit Risk AI Underwriting',
+    type: 'MLOps',
+    problem: 'End-to-end MLOps pipeline for credit risk assessment with automated CI/CD, model versioning, and secure serving.',
+    stack: ['Python', 'Scikit-Learn', 'Docker', 'GitHub Actions', 'AWS', 'MLflow'],
+    features: [
+      'Automated Risk Assessment Pipeline',
+      'Model Registry & Versioning',
+      'Secure Cloud Deployment',
+    ],
+    github: 'https://github.com/bittush8789/credit-risk-ai-underwriting/tree/cicd-mlops',
+    image: '/credit-risk.png',
+    isFeatured: true,
+  },
+  {
+    title: 'MLOps NLP Production System',
+    type: 'MLOps',
+    problem: 'Scalable NLP production system featuring automated training pipelines, model monitoring, and high-performance inference.',
+    stack: ['Transformers', 'PyTorch', 'FastAPI', 'Kubeflow', 'Prometheus', 'Grafana'],
+    features: [
+      'Enterprise NLP Workflows',
+      'Automated Model Lifecycle',
+      'Real-time Performance Tracking',
+    ],
+    github: 'https://github.com/bittush8789/MLOps-NLP-Production-System',
+    image: '/nlp-production.png',
+    isFeatured: true,
+  },
+  {
     title: 'Enterprise 3-Tier E-Commerce Platform',
     type: 'DevOps',
     problem: 'Production-grade 3-tier e-commerce on Kubernetes using FastAPI, Next.js, and Redis/Postgres, orchestrated with Terraform and Helm on AWS EKS.',
